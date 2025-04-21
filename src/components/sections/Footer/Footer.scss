@@ -1,0 +1,11 @@
+.footer {
+    &__content {
+        padding: var(--paddingVerticalSmall) 0;
+    }
+
+    &__copy {
+        font-size: var(--fontSizeExtraSmall);
+        font-weight: var(--fontWeightExtraLight);
+        color: var(--copySecondary);
+    }
+}

@@ -1,0 +1,35 @@
+.hero {
+    padding: var(--paddingHero) 0;
+    
+    &__avatar {
+        display: inline-flex;
+        border-radius: 14px;
+        overflow: hidden;
+
+        &--img {
+            filter: contrast(110%);
+            -webkit-filter: contrast(110%);
+        }
+    }
+
+    &__copy {
+        padding-top: var(--paddingVerticalSmall);
+    }
+
+    &__title {
+        font-size: var(--fontSizeLarge);
+        line-height: var(--lineHeightTitle);
+        font-weight: var(--fontWeightBold);
+
+        @media only screen and (max-width: 767px) {
+            max-width: 75%;
+        }
+    }
+
+    &__intro {
+        font-size: var(--fontSizeSmall);
+        padding-top: var(--paddingVerticalSmall);
+        line-height: var(--lineHeightText);
+        font-weight: var(--fontWeightLight);
+    }
+}
