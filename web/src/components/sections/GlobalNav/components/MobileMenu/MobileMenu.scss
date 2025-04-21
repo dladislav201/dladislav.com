@@ -1,0 +1,36 @@
+.mobile-menu {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    list-style: none;
+    gap: 12px;
+
+    @media only screen and (min-width: 768px) {
+        display: none;
+    }
+    
+    &__item {
+        width: fit-content;
+    }
+    
+    &__link {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        font-size: var(--fontSizeButton);
+        font-weight: var(--fontWeightExtraLight);
+        border-radius: var(--borderRadiusButton);
+        background-color: var(--btnPrimary);
+        color: var(--copyPrimary);
+        
+        &:active {
+            background-color: var(--btnPrimaryHover);
+            color: var(--white);
+        }
+    }
+}

@@ -1,0 +1,45 @@
+.globalnav {
+    top: 0;
+    left: 0;
+    z-index: 999;
+    position: sticky;
+    position: -webkit-sticky;
+    display: flex;
+    height: var(--heightNav);
+
+    &__content {
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 100%;
+
+        @media only screen and (min-width: 768px) {
+            padding: var(--paddingVerticalSmall) 0;
+        }
+    }
+
+    &__burger {
+        position: absolute;
+        right: 0;
+        height: fit-content;
+
+        @media only screen and (min-width: 768px) {
+            display: none;
+        }   
+
+        &-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: var(--r-nav-height);
+            height: var(--r-nav-height);
+            border: none;
+            background-color: transparent;
+            color: var(--jet);
+
+            svg {
+                color: currentColor;
+            }
+        }
+    }
+}

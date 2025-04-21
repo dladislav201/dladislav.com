@@ -1,0 +1,17 @@
+.not-found {    
+    &__title {
+        font-size: var(--fontSizeLarge);
+        line-height: var(--lineHeightTitle);
+        font-weight: var(--fontWeightBold);
+    }
+
+    &__copy {
+        font-size: var(--fontSizeSmall);
+        line-height: var(--lineHeightText);
+        font-weight: var(--fontWeightLight);
+    }
+
+    &__button-wrapper {
+        padding-top: var(--paddingVerticalSmall);
+    }
+}

@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# dladislav.com Monorepo
+
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![CI](https://github.com/dladislav201/dladislav.com/actions/workflows/ci.yml/badge.svg)](https://github.com/dladislav201/dladislav.com/actions/workflows/ci.yml)
+[![Vercel Deployment](https://img.shields.io/github/deployments/dladislav201/dladislav.com/production?label=vercel&logo=vercel)](https://dladislav.com)
+
+> Personal portfolio website monorepo.
+
+[Live Website](https://dladislav.com)
+
+![Website Screenshot](public/landing-page-screenshot.png)
+
+## Project Structure
+
+dladislav.com/
+├── web/ # Next.js frontend
+├── server/ # Node.js backend
+├── LICENSE
+└── README.md
+
+## Tech Stack
+
+#### Frontend
+
+- [Next.js](https://nextjs.org/) - React framework with SSG/SSR
+- [TypeScript](https://www.typescriptlang.org/) - Type safety and better developer experience
+- [Framer Motion](https://www.framer.com/motion/) - Animations and transitions
+- [React Icons](https://react-icons.github.io/react-icons/) - Icon library
+- [Jest](https://jestjs.io/) - Testing
+
+#### Backend
+
+- [Node.js] - JavaScript runtime for server-side development
+- [Express] - Minimal and flexible web application framework
+- [TypeScript] - Type safety for server-side code
+<!-- - [OpenAI] - AI integration for intelligent features -->
+
+## Workspaces
+
+- `web/`: Frontend portfolio website
+- `server/`: Backend API and services
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js (version 18 or later)
+- npm
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   git clone https://github.com/dladislav201/dladislav.com.git
+   cd dladislav.com
+   ```
 
-## Learn More
+2. Install dependencies
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Available Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `npm run dev:web` - Start frontend development server
+- `npm run dev:server` - Start backend development server
+- `npm run build` - Build all projects
+- `npm run test` - Run all tests
 
-## Deploy on Vercel
+## CI/CD
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This portfolio uses GitHub Actions for continuous integration and deployment:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **CI**: Validates code quality on push and pull requests
+- **CD**: Automatically deploys after a successful merge to main branch
+  - Frontend deployment on Vercel
+  - Backend deployment on Railway
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+Vladyslav Dobrodii - [dobrodii.vlad200@gmail.com](mailto:dobrodii.vlad200@gmail.com)
+Project Link: [https://github.com/dladislav201/dladislav.com](https://github.com/dladislav201/dladislav.com)
+
+## Acknowledgements
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Vercel](https://vercel.com) for hosting

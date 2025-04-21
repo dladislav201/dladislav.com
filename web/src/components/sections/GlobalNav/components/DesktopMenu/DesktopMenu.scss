@@ -1,0 +1,35 @@
+.desktop-menu {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    list-style: none;
+    gap: 4px;
+
+    @media only screen and (max-width: 767px) {
+        display: none;
+    }
+    
+    &__link {
+        padding: 6px 12px;
+        font-size: var(--fontSizeButton);
+        font-weight: var(--fontWeightExtraLight);
+        border-radius: var(--borderRadiusButton);
+        color: var(--copyPrimary);
+        
+        transition: 
+            background-color .14s ease-out, 
+            color .14s ease-out, 
+            transform .14s ease-out;
+        will-change: transform;
+        transform-origin: center;
+
+        &:hover {
+            background-color: var(--btnPrimaryHover);
+            color: var(--white);
+        }
+
+        &:active {
+            transform: scale(.98);
+        }
+    }
+  }
