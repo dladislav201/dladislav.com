@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    background-color: transparent;
+}
+
+body {
+    min-width: 350px;
+    position: relative;
+    font-family: var(--font-ibm-plex-mono), 'Helvetica', sans-serif;
+    font-optical-sizing: auto;
+    font-variation-settings:
+    'slnt' 0;
+    -webkit-font-smoothing: antialiased;
+    font-synthesis: none;
+    direction: ltr;
+    -webkit-tap-highlight-color: transparent;
+    background-color: var(--bgPrimary);
+    color: var(--copyPrimary);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+body, button, dd, dl, dt, figure, form, h1, h2, h3, h4, h5, h6, input, li, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+button, input {
+    font-family: var(--font-ibm-plex-mono), 'Helvetica', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.link {
+    color: var(--linkPrimary);
+
+    &:hover {
+        background-color: var(--linkPrimary);
+        color: var(--copyPrimary);
+    }
+}

@@ -1,0 +1,11 @@
+.terminal {
+    &__cursor {
+        display: inline-block;
+        width: 8px;             
+        height: 1em;             
+        background-color: var(--copyPrimary); 
+        margin-left: 6px;
+        animation: blink 1s step-end infinite;
+        vertical-align: middle; 
+    }
+}

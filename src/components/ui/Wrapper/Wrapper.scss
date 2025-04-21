@@ -1,0 +1,17 @@
+.wrapper {
+    display: block;
+    margin: 0 auto;
+    padding: 0 16px;
+    max-width: 780px;
+    width: 100%;
+
+    &--full-height {
+        flex: 1;
+        height: 100%;
+    }
+      
+    &--centered {
+        display: flex;
+        align-items: center;
+    }
+}
