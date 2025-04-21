@@ -1,17 +1,27 @@
-# Personal Portfolio Website
+# dladislav.com Monorepo
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![CI](https://github.com/dladislav201/dladislav.com/actions/workflows/ci.yml/badge.svg)](https://github.com/dladislav201/dladislav.com/actions/workflows/ci.yml)
 [![Vercel Deployment](https://img.shields.io/github/deployments/dladislav201/dladislav.com/production?label=vercel&logo=vercel)](https://dladislav.com)
 
-> Portfolio website built with Next.js.
+> Personal portfolio website monorepo.
 
 [Live Website](https://dladislav.com)
 
-![Portfolio Screenshot](public/landing-page-screenshot.png)
+![Website Screenshot](public/landing-page-screenshot.png)
+
+## Project Structure
+
+dladislav.com/
+├── web/ # Next.js frontend
+├── server/ # Node.js backend
+├── LICENSE
+└── README.md
 
 ## Tech Stack
+
+#### Frontend
 
 - [Next.js](https://nextjs.org/) - React framework with SSG/SSR
 - [TypeScript](https://www.typescriptlang.org/) - Type safety and better developer experience
@@ -19,12 +29,24 @@
 - [React Icons](https://react-icons.github.io/react-icons/) - Icon library
 - [Jest](https://jestjs.io/) - Testing
 
+#### Backend
+
+- [Node.js] - JavaScript runtime for server-side development
+- [Express] - Minimal and flexible web application framework
+- [TypeScript] - Type safety for server-side code
+<!-- - [OpenAI] - AI integration for intelligent features -->
+
+## Workspaces
+
+- `web/`: Frontend portfolio website
+- `server/`: Backend API and services
+
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (version 16 or later)
-- npm or yarn
+- Node.js (version 18 or later)
+- npm
 
 ### Installation
 
@@ -43,54 +65,21 @@
    yarn
    ```
 
-3. Run the development server
-
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
-
-## Project Structure
-
-```
-├── public/              # Static files and images
-├── src/
-│   ├── app/             # Next.js app router
-│   │   ├── styles/      # Global styles
-│   │   ├── layout.tsx   # Root layout
-│   │   └── page.tsx     # Home page
-│   └── components/      # Reusable UI components
-│       ├── ui/          # UI elements
-│       ├── sections/    # Page sections
-│       ├── data/        # Static data and configurations for sections
-│       └── hooks/       # Custom React hooks specific to sections
-├── .eslintrc.js         # ESLint configuration
-├── .gitignore           # Git ignore rules
-├── jest.config.js       # Jest configuration
-├── next.config.js       # Next.js configuration
-├── package.json         # Dependencies and scripts
-├── tsconfig.json        # TypeScript configuration
-└── README.md            # Project documentation
-```
-
 ## Available Scripts
 
-- `npm run dev` - Starts the development server
-- `npm run build` - Builds the site for production
-- `npm run start` - Runs the built site in production mode
-- `npm run lint` - Lints the code with ESLint
-- `npm run typecheck` - Checks TypeScript types without emitting files
-- `npm run test` - Runs tests with Jest
+- `npm run dev:web` - Start frontend development server
+- `npm run dev:server` - Start backend development server
+- `npm run build` - Build all projects
+- `npm run test` - Run all tests
 
 ## CI/CD
 
 This portfolio uses GitHub Actions for continuous integration and deployment:
 
 - **CI**: Validates code quality on push and pull requests
-- **CD**: Automatically deploys to Vercel after a successful merge to main branch
+- **CD**: Automatically deploys after a successful merge to main branch
+  - Frontend deployment on Vercel
+  - Backend deployment on Railway
 
 ## License
 
@@ -99,7 +88,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contact
 
 Vladyslav Dobrodii - [dobrodii.vlad200@gmail.com](mailto:dobrodii.vlad200@gmail.com)
-
 Project Link: [https://github.com/dladislav201/dladislav.com](https://github.com/dladislav201/dladislav.com)
 
 ## Acknowledgements
