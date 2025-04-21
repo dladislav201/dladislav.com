@@ -9,6 +9,7 @@ export class PineconeService {
         this.pinecone = new Pinecone({
             apiKey: config.pineconeKey,
         });
+        this.indexName = config.pineconeIndexName;
     }
 
     async initialize() {

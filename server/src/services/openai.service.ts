@@ -13,7 +13,7 @@ export class OpenAIService {
     async generateEmbedding(text: string): Promise<number[]> {
         try {
             const response = await this.openai.embeddings.create({
-                model: 'text-embedding-ada-002',
+                model: 'text-embedding-3-small',
                 input: text,
             });
             return response.data[0].embedding;
@@ -40,7 +40,7 @@ export class OpenAIService {
                 temperature: 0.7,
                 max_tokens: 500,
             });
-            
+
             return response.choices[0].message.content || 'Sorry, I could not generate a response.';
         } catch (error) {
             console.error('Error generating response:', error);
