@@ -13,11 +13,13 @@
 
 ## Project Structure
 
+```
 dladislav.com/
 ├── web/ # Next.js frontend
 ├── server/ # Node.js backend
 ├── LICENSE
 └── README.md
+```
 
 ## Tech Stack
 
