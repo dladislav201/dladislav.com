@@ -9,7 +9,7 @@
 
 [Live Website](https://dladislav.com)
 
-![Website Screenshot](public/landing-page-screenshot.png)
+![Website Screenshot](web/public/landing-page-screenshot.png)
 
 ## Project Structure
 
