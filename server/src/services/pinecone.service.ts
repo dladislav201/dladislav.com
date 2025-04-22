@@ -24,8 +24,8 @@ export class PineconeService {
 
   async upsertVector(id: string, embedding: number[], metadata: any) {
     try {
-      const index = await this.initialize();
-      await index.upsert([
+      const result = await this.initialize();
+      await result.upsert([
         {
           id,
           values: embedding,

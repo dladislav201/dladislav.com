@@ -17,7 +17,7 @@ export class AIController {
     this.userRequestCount = new Map();
   }
 
-  public chat = async (req: Request, res: Response): Promise<void> => {
+  public chat = async (req: Request, res: Response): Promise<void | Response> => {
     try {
       await this.vectorStore.initialize();
             
@@ -25,18 +25,16 @@ export class AIController {
       const userIP = req.ip || 'unknown';
             
       if (!message) {
-        res.status(400).json({ error: 'Message is required' });
-        return;
+        return res.status(400).json({ error: 'Message is required' });
       }
 
       const requestCount = this.userRequestCount.get(userIP) || 0;
             
       if (requestCount >= this.MAX_REQUESTS_PER_USER) {
-        res.status(429).json({ 
+        return res.status(429).json({ 
           error: 'Request limit exceeded',
           message: `You have reached your limit of ${this.MAX_REQUESTS_PER_USER} questions. Thank you for your interest!`
         });
-        return;
       }
 
       this.userRequestCount.set(userIP, requestCount + 1);

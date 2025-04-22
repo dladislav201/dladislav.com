@@ -10,6 +10,6 @@ export const config = {
   environment: process.env.NODE_ENV || 'development',
 };
 
-if (!process.env.OPENAI_API_KEY || !process.env.PINECONE_API_KEY || !process.env.PINECONE_ENVIRONMENT) {
+if (!process.env.OPENAI_API_KEY || !process.env.PINECONE_API_KEY) {
   throw new Error('Missing required environment variables');
 }
