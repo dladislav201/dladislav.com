@@ -45,7 +45,9 @@
 │   │   └── page.tsx     # Home page
 │   └── components/      # Reusable UI components
 │       ├── ui/          # UI elements
-│       └── sections/    # Page sections
+│       ├── sections/    # Page sections
+│       ├── data/        # Static data and configurations for sections
+│       └── hooks/       # Custom React hooks specific to sections
 ├── .eslintrc.js         # ESLint configuration
 ├── .gitignore           # Git ignore rules
 ├── jest.config.js       # Jest configuration
