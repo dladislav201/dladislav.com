@@ -7,6 +7,7 @@
     "dev": "nodemon",
     "build": "tsc",
     "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --fix",
     "test": "echo \"No tests yet, but CI passes\" && exit 0",
     "seed": "ts-node src/scripts/seed-knowledge.ts"
   },
@@ -31,6 +32,8 @@
     "xss": "^1.0.15"
   },
   "devDependencies": {
+    "@eslint/js": "^9.25.1",
+    "@stylistic/eslint-plugin": "^4.2.0",
     "@types/compression": "^1.7.5",
     "@types/connect-timeout": "^0.0.39",
     "@types/cors": "^2.8.17",
@@ -38,8 +41,10 @@
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.14.1",
     "@types/uuid": "^10.0.0",
+    "eslint": "^9.25.1",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.31.0"
   }
 }
