@@ -2,35 +2,35 @@
 
 ## Tech Stack
 
-- [Next.js](https://nextjs.org/) - React framework with SSG/SSR
-- [TypeScript](https://www.typescriptlang.org/) - Type safety and better developer experience
-- [Framer Motion](https://www.framer.com/motion/) - Animations and transitions
-- [React Icons](https://react-icons.github.io/react-icons/) - Icon library
-- [Jest](https://jestjs.io/) - Testing
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [React Icons](https://react-icons.github.io/react-icons/)
 
 ## Local Development
 
 1. Clone the repository
 
-   ```bash
-   cd web
-   ```
+```bash
+git clone https://github.com/dladislav201/dladislav.com.git
+cd dladislav.com/web
+```
 
 2. Install dependencies
 
-   ```bash
-   npm install
-   # or
-   yarn
-   ```
+```bash
+npm install
+# or
+yarn
+```
 
 3. Run the development server
 
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
+```bash
+npm run dev
+# or
+yarn dev
+```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
@@ -50,11 +50,9 @@
 │       └── hooks/       # Custom React hooks specific to sections
 ├── .eslintrc.js         # ESLint configuration
 ├── .gitignore           # Git ignore rules
-├── jest.config.js       # Jest configuration
 ├── next.config.js       # Next.js configuration
 ├── package.json         # Dependencies and scripts
-├── tsconfig.json        # TypeScript configuration
-└── README.md            # Project documentation
+└── tsconfig.json        # TypeScript configuration
 ```
 
 ## Available Scripts
@@ -65,15 +63,3 @@
 - `npm run lint` - Lints the code with ESLint
 - `npm run typecheck` - Checks TypeScript types without emitting files
 - `npm run test` - Runs tests with Jest
-
-## CI/CD
-
-This portfolio uses GitHub Actions for continuous integration and deployment:
-
-- **CI**: Validates code quality on push and pull requests
-- **CD**: Automatically deploys to Vercel after a successful merge to main branch
-
-## Acknowledgements
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Vercel](https://vercel.com) for hosting
