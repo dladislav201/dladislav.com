@@ -40,7 +40,7 @@ jobs:
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
-      PINECONE_INDEX_NAME: portfolio-knowledge-test
+      PINECONE_INDEX_NAME: portfolio-knowledge
       NODE_ENV: test
 
     steps:
