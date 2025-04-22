@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { OpenAIService } from '../services/openai.service';
 import { PineconeService } from '../services/pinecone.service';
+import xss from 'xss';
 
 export class AIController {
     private aiService: OpenAIService;
@@ -13,11 +14,11 @@ export class AIController {
         this.irrelevantQuestionsCount = new Map();
     }
 
-    async chat(req: Request, res: Response): Promise<void> {
+    public chat = async (req: Request, res: Response): Promise<void> => {
         try {
             await this.vectorStore.initialize();
             
-            const { message } = req.body;
+            const message = xss(req.body.message);
             const userIP = req.ip || 'unknown';
             
             if (!message) {
