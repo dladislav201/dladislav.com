@@ -30,7 +30,9 @@ export class OpenAIService {
                 messages: [
                 {
                     role: 'system',
-                    content: `You are an AI assistant on a portfolio website. Use the following context to answer questions: ${context}`,
+                    content: `You are an AI assistant helping to provide information about Vladyslav Dobrodii's professional portfolio. 
+                        Respond in the third person, providing accurate information based on the following context: ${context}. 
+                        Always clarify that you're an AI assistant representing Vladyslav's professional profile.`,
                 },
                 {
                     role: 'user',
