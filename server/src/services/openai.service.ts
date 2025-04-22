@@ -26,7 +26,7 @@ export class OpenAIService {
     async generateResponse(prompt: string, context: string): Promise<string> {
         try {
             const response = await this.openai.chat.completions.create({
-                model: 'gpt-3.5-turbo',
+                model: 'gpt-4o-mini',
                 messages: [
                 {
                     role: 'system',

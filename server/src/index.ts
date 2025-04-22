@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import compression from 'compression';
+import aiRoutes from './routes/ai.routes';
 import { config } from './config/env';
 
 const app: Express = express();
@@ -13,6 +14,8 @@ app.use(compression());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/api/ai', aiRoutes);
 
 app.get('/', (req: Request, res: Response) => {
   res.json({ message: 'Server is running' });
