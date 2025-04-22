@@ -6,12 +6,15 @@ import xss from 'xss';
 export class AIController {
   private aiService: OpenAIService;
   private vectorStore: PineconeService;
+  private userRequestCount: Map<string, number>;
   private irrelevantQuestionsCount: Map<string, number>;
+  private readonly MAX_REQUESTS_PER_USER = 20;
 
   constructor() {
     this.aiService = new OpenAIService();
     this.vectorStore = new PineconeService();
     this.irrelevantQuestionsCount = new Map();
+    this.userRequestCount = new Map();
   }
 
   public chat = async (req: Request, res: Response): Promise<void> => {
@@ -25,6 +28,18 @@ export class AIController {
         res.status(400).json({ error: 'Message is required' });
         return;
       }
+
+      const requestCount = this.userRequestCount.get(userIP) || 0;
+            
+      if (requestCount >= this.MAX_REQUESTS_PER_USER) {
+        res.status(429).json({ 
+          error: 'Request limit exceeded',
+          message: `You have reached your limit of ${this.MAX_REQUESTS_PER_USER} questions. Thank you for your interest!`
+        });
+        return;
+      }
+
+      this.userRequestCount.set(userIP, requestCount + 1);
 
       const queryEmbedding = await this.aiService.generateEmbedding(message);
             
