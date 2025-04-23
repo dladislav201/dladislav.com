@@ -1,15 +1,15 @@
-import React from "react";
-import Link from "next/link";
-import classNames from "classnames";
-import "./Button.scss";
+import React from 'react';
+import Link from 'next/link';
+import classNames from 'classnames';
+import './Button.scss';
 
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   href?: string;
-  variant: "primary" | "secondary" | "danger";
-  size: "small" | "medium" | "large";
-  type?: "button" | "submit" | "reset";
+  variant: 'primary' | 'secondary' | 'danger';
+  size: 'small' | 'medium' | 'large';
+  type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   className?: string;
 }
@@ -18,19 +18,15 @@ export const Button = ({
   children,
   onClick,
   href,
-  variant = "primary",
-  size = "medium",
+  variant = 'primary',
+  size = 'medium',
   disabled = false,
   className,
-  type = "button",
+  type = 'button',
 }: ButtonProps) => {
-  const buttonClass = classNames(
-    "btn",
-    `btn--${variant}`,
-    `btn--${size}`,
-    className,
-    { "btn--disabled": disabled }
-  );
+  const buttonClass = classNames('btn', `btn--${variant}`, `btn--${size}`, className, {
+    'btn--disabled': disabled,
+  });
 
   if (href) {
     return (
@@ -41,12 +37,7 @@ export const Button = ({
   }
 
   return (
-    <button
-      className={buttonClass}
-      onClick={onClick}
-      disabled={disabled}
-      type={type}
-    >
+    <button className={buttonClass} onClick={onClick} disabled={disabled} type={type}>
       {children}
     </button>
   );

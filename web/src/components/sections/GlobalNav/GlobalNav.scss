@@ -1,11 +1,15 @@
 .globalnav {
     top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 997;
     position: sticky;
     position: -webkit-sticky;
     display: flex;
     height: var(--heightNav);
+
+    &--expanded {
+        z-index: 999;
+    }
 
     &__content {
         display: flex;
