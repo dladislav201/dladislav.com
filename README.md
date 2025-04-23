@@ -9,7 +9,7 @@
 
 [Live Website](https://dladislav.com)
 
-![Website Screenshot](public/landing-page-screenshot.png)
+![Website Screenshot](web/public/landing-page-screenshot.png)
 
 ## Project Structure
 
@@ -25,18 +25,19 @@ dladislav.com/
 
 #### Frontend
 
-- [Next.js](https://nextjs.org/) - React framework with SSG/SSR
-- [TypeScript](https://www.typescriptlang.org/) - Type safety and better developer experience
-- [Framer Motion](https://www.framer.com/motion/) - Animations and transitions
-- [React Icons](https://react-icons.github.io/react-icons/) - Icon library
-- [Jest](https://jestjs.io/) - Testing
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [React Icons](https://react-icons.github.io/react-icons/)
 
 #### Backend
 
-- [Node.js] - JavaScript runtime for server-side development
-- [Express] - Minimal and flexible web application framework
-- [TypeScript] - Type safety for server-side code
-<!-- - [OpenAI] - AI integration for intelligent features -->
+- [Node.js]
+- [Express]
+- [TypeScript](https://www.typescriptlang.org/)
+- [OpenAI API Integration](https://platform.openai.com/docs/api-reference)
+- [Pinecone](https://www.pinecone.io/)
+- [Jest](https://jestjs.io/)
 
 ## Workspaces
 
@@ -54,18 +55,15 @@ dladislav.com/
 
 1. Clone the repository
 
-   ```bash
-   git clone https://github.com/dladislav201/dladislav.com.git
-   cd dladislav.com
-   ```
+`s
 
 2. Install dependencies
 
-   ```bash
-   npm install
-   # or
-   yarn
-   ```
+```bash
+npm install
+# or
+yarn
+```
 
 ## Available Scripts
 
@@ -73,15 +71,6 @@ dladislav.com/
 - `npm run dev:server` - Start backend development server
 - `npm run build` - Build all projects
 - `npm run test` - Run all tests
-
-## CI/CD
-
-This portfolio uses GitHub Actions for continuous integration and deployment:
-
-- **CI**: Validates code quality on push and pull requests
-- **CD**: Automatically deploys after a successful merge to main branch
-  - Frontend deployment on Vercel
-  - Backend deployment on Railway
 
 ## License
 
@@ -91,8 +80,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Vladyslav Dobrodii - [dobrodii.vlad200@gmail.com](mailto:dobrodii.vlad200@gmail.com)
 Project Link: [https://github.com/dladislav201/dladislav.com](https://github.com/dladislav201/dladislav.com)
-
-## Acknowledgements
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Vercel](https://vercel.com) for hosting
