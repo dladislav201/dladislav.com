@@ -9,10 +9,7 @@
     @media (hover: hover) {
         transition: 
             background-color .14s ease-out, 
-            color .14s ease-out, 
-            transform .14s ease-out;
-        will-change: transform;
-        transform-origin: center;
+            color .14s ease-out;
     }
   
     &--primary {
@@ -23,18 +20,14 @@
         @media (hover: hover) {
             &:hover {
                 background-color: var(--btnPrimaryHover);
-                color: var(--white);
-            }
-
-            &:active {
-                transform: scale(.98);
+                color: var(--colorWhite);
             }
         }
     
         @media (hover: none) {
             &:active {
                 background-color: var(--btnPrimaryHover);
-                color: var(--white);
+                color: var(--colorWhite);
             }
         }
     }
@@ -43,6 +36,20 @@
         background-color: var(--btnSecondary);
         color: var(--copyPrimary);
         border: none;
+
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--btnSecondaryHover);
+                color: var(--colorWhite);
+            }
+        }
+    
+        @media (hover: none) {
+            &:active {
+                background-color: var(--btnSecondaryHover);
+                color: var(--colorWhite);
+            }
+        }
     }
   
     &--danger {

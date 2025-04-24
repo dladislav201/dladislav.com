@@ -38,7 +38,7 @@
 
             &:hover {
                 background-color: rgba(50, 50, 50, 0.888);
-                color: var(--white);
+                color: var(--colorWhite);
             }
 
             &:active {
@@ -49,7 +49,7 @@
         @media (hover: none) {
             &:active {
                 background-color: rgba(50, 50, 50, 0.888);
-                color: var(--white);
+                color: var(--colorWhite);
             }
         }
     }
@@ -83,7 +83,7 @@
       font-size: 14px;
       padding-top: 17.25px;
       text-align: center;
-      color: var(--pastelRed);
+      color: var(--colorRed);
     }
 
     &__tips {
@@ -107,23 +107,23 @@
       background-color: rgba(50, 50, 50, 0.888);
       font-size: 12px;
       cursor: pointer;
-      transition: transform .14s ease-out;
-      transform-origin: center;
-
+      
       @media (hover: hover) {
+        transition: background-color .2s ease-out;
+
         &:hover {
-          transform: scale(.99);
+          background-color: rgb(61, 61, 61);
         }
       }
 
       @media (hover: none) {
         &:active {
-          transform: scale(.99);
+          background-color: rgb(61, 61, 61);
         }
       }
 
       svg {
-        color: var(--pastelYellow);
+        color: var(--colorYellow);
         flex-shrink: 0;
       }
     }
