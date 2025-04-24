@@ -40,13 +40,37 @@
         border: none;
         outline: none;
         flex-shrink: 0;
-        color: var(--eerieBlack);
+        background-color: var(--colorBlue);
+        color: var(--copyPrimary);
         cursor: pointer;
-        transition: color .14s ease-out, opacity .14s ease-out;
+        transition: 
+            opacity .14s ease-out, 
+            background-color .14s ease-out, 
+            transform .14s ease-out;
+        will-change: transform;
+        transform-origin: center;
 
         &:disabled {
-            color: var(--copyPrimary);
+            opacity: .4;
             cursor: not-allowed;
+        }
+
+        &:not(:disabled) {
+            @media (hover: hover) {
+                &:hover {
+                    background-color: var(--colorBlueLight);
+                }
+
+                &:active {
+                    transform: scale(.98);
+                }
+            }
+        
+            @media (hover: none) {
+                &:active {
+                    background-color: var(--colorBlueLight);
+                }
+            }
         }
     }
 }
