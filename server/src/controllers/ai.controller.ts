@@ -32,7 +32,7 @@ export class AIController {
         return res.status(400).json({ error: 'Message is required' });
       }
 
-      let chatHistory = this.userChatHistory.get(userIP) || [];
+      const chatHistory = this.userChatHistory.get(userIP) || [];
       chatHistory.push({ role: 'user', content: message });
 
       if (chatHistory.length > this.MAX_HISTORY_LENGTH * 2) { 

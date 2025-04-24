@@ -67,7 +67,7 @@ export class OpenAIService {
             happy to tell you about his skills, projects, or background!"`,
         },
         ...chatHistory
-      ]
+      ];
 
       const response = await this.openai.chat.completions.create({
         model: 'gpt-4o-mini',
