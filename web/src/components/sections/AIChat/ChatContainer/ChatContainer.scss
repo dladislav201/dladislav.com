@@ -68,8 +68,7 @@
         gap: 8px;
         flex-direction: column-reverse; 
         overflow-y: auto;
-        padding: var(--paddingVerticalSmall) 0;
-        padding-bottom: calc(var(--paddingVerticalSmall) * 2 + 110px);
+        padding-top: var(--paddingVerticalSmall);
         scrollbar-width: none;
         -ms-overflow-style: none;
         
@@ -101,6 +100,7 @@
 
     &__tip {
       display: inline-flex;
+      align-items: center;
       gap: 8px;
       padding: 8px 12px;
       border-radius: 32px;
@@ -124,6 +124,7 @@
 
       svg {
         color: var(--pastelYellow);
+        flex-shrink: 0;
       }
     }
 
@@ -169,7 +170,7 @@
         bottom: 0;
         left: 0;
         right: 0;
-        height: calc(var(--paddingVerticalSmall) * 2 + 110px);
+        pointer-events: none;
     
         &-blur {
           z-index: 1;

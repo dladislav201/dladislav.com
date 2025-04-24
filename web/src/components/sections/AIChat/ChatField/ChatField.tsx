@@ -43,7 +43,7 @@ export function ChatField({ onSendMessage, isLoading }: ChatFieldProps) {
         onChange={(e) => setMessage(e.target.value)}
         onKeyDown={handleKeyDown}
         disabled={isLoading}
-        placeholder="Ask something about Vlad..."
+        placeholder="Ask something..."
         className="chat-field__textarea"
       />
       <div className="chat-field__button-wrapper">

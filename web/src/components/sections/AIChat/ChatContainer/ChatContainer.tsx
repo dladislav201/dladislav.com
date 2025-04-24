@@ -1,15 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ChatField } from '../ChatField';
 import { ChatMessage } from '../ChatMessage';
 import { Wrapper } from '@/components';
-import { ChatMessage as ChatMessageType } from '@/moddels';
-import { motion } from 'framer-motion';
 import { promptTips } from '@/data';
+import { useChatMessages } from '@/hooks';
+import { motion } from 'framer-motion';
 import { X, Lightbulb } from 'lucide-react';
-import { v4 as uuidv4 } from 'uuid';
-import { sendChatMessage } from '@/lib';
 import './ChatContainer.scss';
 
 interface ChatContainerProps {
@@ -17,52 +15,25 @@ interface ChatContainerProps {
 }
 
 export function ChatContainer({ onCloseBtnClick }: ChatContainerProps) {
-  const [messages, setMessages] = useState<ChatMessageType[]>([
-    {
-      id: 'welcome',
-      content: "Hello! I'm an AI assistant for Vladyslav's portfolio. How can I help you?",
-      role: 'assistant',
-      timestamp: new Date(),
-    },
-  ]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const { messages, isLoading, error, sendMessage } = useChatMessages();
+  const inputWrapper = useRef<HTMLDivElement | null>(null);
+  const chatContentRef = useRef<HTMLDivElement | null>(null);
+  const chatCurtainRef = useRef<HTMLDivElement | null>(null);
 
-  const handleSendMessage = async (message: string) => {
-    if (!message.trim()) return;
-
-    const userMessage: ChatMessageType = {
-      id: uuidv4(),
-      content: message,
-      role: 'user',
-      timestamp: new Date(),
+  useEffect(() => {
+    const updatePadding = () => {
+      if (inputWrapper.current && chatContentRef.current && chatCurtainRef.current) {
+        const height = inputWrapper.current.offsetHeight;
+        chatContentRef.current.style.paddingBottom = `${height}px`;
+        chatCurtainRef.current.style.height = `${height}px`;
+      }
     };
+    updatePadding();
 
-    setMessages((prev) => [...prev, userMessage]);
-    setIsLoading(true);
-    setError(null);
+    window.addEventListener('resize', updatePadding);
 
-    try {
-      const { response: aiResponse } = await sendChatMessage(message);
-
-      const assistantMessage: ChatMessageType = {
-        id: uuidv4(),
-        content: aiResponse,
-        role: 'assistant',
-        timestamp: new Date(),
-      };
-
-      setMessages((prev) => [...prev, assistantMessage]);
-    } catch (err: unknown) {
-      const errorMessage =
-        err instanceof Error ? err.message : 'Failed to get a response. Please try again.';
-
-      setError(errorMessage);
-      console.error('Error in AI Chat:', err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    return () => window.removeEventListener('resize', updatePadding);
+  }, [messages, isLoading]);
 
   const containerVariants = {
     hidden: {
@@ -100,13 +71,13 @@ export function ChatContainer({ onCloseBtnClick }: ChatContainerProps) {
       </button>
       <Wrapper fullHeight>
         <div className="chat__wrapper">
-          <div className="chat__content">
+          <div ref={chatContentRef} className="chat__content">
             {error && <div className="chat__error">{error}</div>}
 
             {messages.length < 2 && (
               <ul className="chat__tips">
                 {promptTips.map((tip, index) => (
-                  <li key={index} className="chat__tip" onClick={() => handleSendMessage(tip)}>
+                  <li key={index} className="chat__tip" onClick={() => sendMessage(tip)}>
                     <Lightbulb size={14} strokeWidth={2} />
                     {tip}
                   </li>
@@ -127,8 +98,8 @@ export function ChatContainer({ onCloseBtnClick }: ChatContainerProps) {
             ))}
           </div>
 
-          <div className="chat__input-wrapper">
-            <ChatField onSendMessage={handleSendMessage} isLoading={isLoading} />
+          <div ref={inputWrapper} className="chat__input-wrapper">
+            <ChatField onSendMessage={sendMessage} isLoading={isLoading} />
             <div className="chat__disclaimer">
               <p className="chat__disclaimer-copy">
                 This chat uses artificial intelligence technology powered by OpenAI. Responses are
@@ -139,7 +110,7 @@ export function ChatContainer({ onCloseBtnClick }: ChatContainerProps) {
               </p>
             </div>
           </div>
-          <div className="chat__curtain">
+          <div ref={chatCurtainRef} className="chat__curtain">
             <div className="chat__curtain-blur">
               <div></div>
               <div></div>
