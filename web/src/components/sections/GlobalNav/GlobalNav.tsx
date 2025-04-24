@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import { AnimatePresence } from "framer-motion";
-import classNames from "classnames";
-import { Wrapper } from "@/components";
-import { DesktopMenu, MobileMenu, Curtain } from "./components";
-import { useResponsive } from "@/hooks";
-import "./GlobalNav.scss";
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import classNames from 'classnames';
+import { Wrapper, Curtain } from '@/components';
+import { DesktopMenu, MobileMenu } from './components';
+import { useResponsive } from '@/hooks';
+import './GlobalNav.scss';
 
 export const Globalnav = () => {
   const { isMobile } = useResponsive();
@@ -45,23 +45,23 @@ export const Globalnav = () => {
     };
 
     if (isMenuOpen) {
-      window.addEventListener("scroll", handleScroll);
+      window.addEventListener('scroll', handleScroll);
     } else {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     }
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [isMenuOpen]);
 
   return (
     <>
-      <nav className="globalnav">
+      <nav
+        className={classNames('globalnav', {
+          'globalnav--expanded': isMenuOpen,
+        })}
+      >
         <Wrapper fullHeight>
-          <div
-            className={classNames("globalnav__content", {
-              expanded: isMenuOpen,
-            })}
-          >
+          <div className="globalnav__content">
             {!isMobile && <DesktopMenu />}
 
             {isMobile && <MobileMenu isOpen={isMenuOpen} />}
@@ -138,7 +138,7 @@ export const Globalnav = () => {
         </Wrapper>
       </nav>
       <AnimatePresence>
-        {isMobile && isMenuOpen && <Curtain onClick={toggleNav} />}
+        {isMobile && isMenuOpen && <Curtain onCurtainClick={toggleNav} disableOnDesktop />}
       </AnimatePresence>
     </>
   );

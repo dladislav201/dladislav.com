@@ -1,7 +1,7 @@
 :root {
     --heightNav: 56px;
 
-    --paddingHero: 55.5px;
+    --paddingHero: 50px;
     --paddingVerticalSmall: 25.25px;
 
     --fontSizeButton: 15px;
@@ -28,7 +28,8 @@
     --raisinBlack: #28282a;
     --taupeGray: #86868b;
     --royalBlue: #0071e3;
-    --rustyRed: #dc3545;
+    --pastelRed: #ff746c;
+    --pastelYellow: #ffee8c;
 
     --bgPrimary: var(--black);
     --copyPrimary: var(--ghostWhite);
@@ -36,6 +37,6 @@
     --btnPrimary: var(--eerieBlack);
     --btnPrimaryHover: var(--raisinBlack);
     --btnSecondary: var(--eerieBlack);
-    --btnDanger: var(--rustyRed);
+    --btnDanger: var(--pastelRed);
     --linkPrimary: var(--royalBlue);
 }
