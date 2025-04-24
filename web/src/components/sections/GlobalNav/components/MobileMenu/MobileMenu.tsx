@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { menuItems } from "@/data";
-import "./MobileMenu.scss";
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { menuItems } from '@/data';
+import './MobileMenu.scss';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -36,7 +36,7 @@ export const MobileMenu = ({ isOpen }: MobileMenuProps) => {
       y: 0,
       transition: {
         duration: 0.2,
-        ease: "easeOut",
+        ease: 'easeOut',
       },
     },
     exit: {
@@ -59,16 +59,8 @@ export const MobileMenu = ({ isOpen }: MobileMenuProps) => {
           exit="exit"
         >
           {menuItems.map((item, index) => (
-            <motion.li
-              key={index}
-              className="mobile-menu__item"
-              variants={itemVariants}
-            >
-              <Link
-                href={item.href}
-                className="mobile-menu__link"
-                target={item.target}
-              >
+            <motion.li key={index} className="mobile-menu__item" variants={itemVariants}>
+              <Link href={item.href} className="mobile-menu__link" target={item.target}>
                 {item.label}
               </Link>
             </motion.li>

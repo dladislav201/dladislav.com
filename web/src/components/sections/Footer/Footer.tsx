@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { Wrapper } from "@/components";
-import "./Footer.scss";
+import Link from 'next/link';
+import { Wrapper } from '@/components';
+import './Footer.scss';
 
 export const Footer = () => {
   return (
@@ -8,22 +8,18 @@ export const Footer = () => {
       <Wrapper>
         <div className="footer__content">
           <p className="footer__copy">
-            All of the code that powers this site is up on my{" "}
-            <Link
-              href={"https://github.com/dladislav201"}
-              className="link"
-              target="_blank"
-            >
+            All of the code that powers this site is up on my{' '}
+            <Link href={'https://github.com/dladislav201'} className="link" target="_blank">
               Github page
-            </Link>{" "}
-            under the{" "}
+            </Link>{' '}
+            under the{' '}
             <Link
-              href={"https://github.com/dladislav201/dladislav.com"}
+              href={'https://github.com/dladislav201/dladislav.com'}
               className="link"
               target="_blank"
             >
               dladislav.com
-            </Link>{" "}
+            </Link>{' '}
             repo.
           </p>
         </div>

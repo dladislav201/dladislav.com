@@ -32,4 +32,11 @@
         line-height: var(--lineHeightText);
         font-weight: var(--fontWeightLight);
     }
+
+    &__button-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: var(--paddingVerticalSmall);
+        will-change: transform;
+    }
 }

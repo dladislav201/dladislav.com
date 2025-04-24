@@ -2,3 +2,18 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
+
+@keyframes typingAnimation {
+    0% { 
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-3px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

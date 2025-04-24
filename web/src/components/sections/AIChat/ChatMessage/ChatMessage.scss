@@ -1,0 +1,23 @@
+.message {
+    position: relative;
+    display: flex;
+    width: 75%;
+    
+    &--sent {
+        justify-content: flex-end;
+        margin-left: auto;
+
+        .chat-bubble {
+            background-color: rgba(50, 50, 50, 0.888);
+        }
+    }
+
+    &--received {
+        justify-content: flex-start;
+        margin-right: auto;
+
+        .chat-bubble {
+            background-color: rgba(50, 50, 50, 0.444);
+        }
+    }   
+}
