@@ -8,11 +8,27 @@ import { globalLimiter, aiLimiter } from './config/rate-limiter';
 import aiRoutes from './routes/ai.routes';
 import { config } from './config/env';
 
+const allowedOrigins = [
+  process.env.WEB_URL,
+];
+
+if (process.env.NODE_ENV !== 'production') {
+  allowedOrigins.push('http://localhost:3000');
+}
+
 const app: Express = express();
 
 app.use(helmet());
 app.use(cors({
-  origin: process.env.WEB_URL || 'http://localhost:3000',
+  origin: function(origin, callback) {
+    if (!origin) return callback(new Error('Origin required for this endpoint'), false);
+    
+    if (allowedOrigins.indexOf(origin) === -1) {
+      return callback(new Error('CORS policy violation'), false);
+    }
+    
+    return callback(null, true);
+  },
   methods: ['GET', 'POST']
 }));
 
