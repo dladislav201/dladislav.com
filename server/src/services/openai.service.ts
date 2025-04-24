@@ -1,4 +1,5 @@
 import OpenAI from 'openai';
+import { ChatCompletionMessageParam } from 'openai/resources/chat';
 import { config } from '../config/env';
 
 export class OpenAIService {
@@ -23,19 +24,31 @@ export class OpenAIService {
     }
   }
 
-  async generateResponse(prompt: string, context: string): Promise<string> {
+  async generateResponse(
+    context: string, 
+    chatHistory: ChatCompletionMessageParam[]
+  ): Promise<string> {
     try {
-      const response = await this.openai.chat.completions.create({
-        model: 'gpt-4o-mini',
-        messages: [
-          {
-            role: 'system',
-            content: `You are an AI assistant for Vladyslav Dobrodii's portfolio website.
-          
+      const messages: ChatCompletionMessageParam[] = [
+        {
+          role: 'system',
+          content: `You are an AI assistant for Vladyslav Dobrodii's portfolio website.
+        
             ABOUT RESPONSES:
             - Respond in a friendly, professional tone
             - Be concise but informative
-            - Always clarify that you're an AI assistant representing Vladyslav's professional profile
+            - Be creative and varied in your responses
+            - NEVER repeat context information word-for-word
+            - Always rephrase and reformulate information in your own words
+            - Use different sentence structures and vocabulary even for similar questions
+            - Occasionally add relevant examples or analogies to enrich your responses
+
+            CONTEXT GUIDELINES:
+            - NEVER deviate from factual information provided in the context
+            - Do NOT make up information about Vladyslav that isn't in the context
+            - If asked about something not mentioned in the context, clearly state 
+              "I don't have specific information about that in my knowledge base about Vladyslav"
+            - You may creatively rephrase information, but the factual content must remain accurate
             
             DETERMINING RELEVANT QUESTIONS:
             The following types of questions should ALWAYS be considered relevant:
@@ -52,13 +65,14 @@ export class OpenAIService {
             current events, etc.), politely redirect the conversation back to Vladyslav by saying something like: 
             "I'm an AI assistant specifically designed to talk about Vladyslav's portfolio and experience. I'd be 
             happy to tell you about his skills, projects, or background!"`,
-          },
-          {
-            role: 'user',
-            content: prompt,
-          },
-        ],
-        temperature: 0.7,
+        },
+        ...chatHistory
+      ]
+
+      const response = await this.openai.chat.completions.create({
+        model: 'gpt-4o-mini',
+        messages: messages,
+        temperature: 0.8,
         max_tokens: 500,
       });
 
