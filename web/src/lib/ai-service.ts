@@ -1,6 +1,9 @@
 import { ChatResponse } from '@/moddels';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+const API_URL = 
+  process.env.NODE_ENV === 'development' 
+    ? 'http://localhost:3001' 
+    : process.env.NEXT_PUBLIC_API_URL;
 
 export async function sendChatMessage(message: string): Promise<ChatResponse> {
   try {
