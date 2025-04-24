@@ -105,8 +105,8 @@ export function ChatContainer({ onCloseBtnClick }: ChatContainerProps) {
                 This chat uses artificial intelligence technology powered by OpenAI. Responses are
                 generated automatically and may not always be accurate. Do not rely on this system
                 for medical, legal, financial, or other professional advice. Your messages may be
-                processed by OpenAI's API to generate responses. By using this chat, you acknowledge
-                these limitations.
+                processed by OpenAI&apos;s API to generate responses. By using this chat, you
+                acknowledge these limitations.
               </p>
             </div>
           </div>

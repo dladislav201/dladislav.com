@@ -21,8 +21,11 @@ export async function sendChatMessage(message: string): Promise<ChatResponse> {
     }
 
     return await response.json();
-  } catch (error: any) {
-    console.error('Error in sendChatMessage:', error);
-    throw new Error(error.message || 'Failed to communicate with AI assistant');
+  } catch (err: unknown) {
+    const errorMessage =
+      err instanceof Error ? err.message : 'Failed to communicate with AI assistant.';
+
+    console.error('Error in ai-service:', err);
+    throw errorMessage;
   }
 }

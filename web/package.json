@@ -6,6 +6,7 @@
     "dev": "npx next dev",
     "start": "npx next start",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "typecheck": "tsc --noEmit",
     "test": "echo \"No tests yet, but CI passes\" && exit 0"
   },
