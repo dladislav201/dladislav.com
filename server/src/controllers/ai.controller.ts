@@ -45,7 +45,7 @@ export class AIController {
 
       const isRelevant = relevantDocs.some(doc => {
         if (doc.score === undefined) return false;
-        return typeof doc.score === 'number' && doc.score >= 0.7;
+        return typeof doc.score === 'number' && doc.score >= 0.4;
       });
 
       if (!isRelevant) {
@@ -55,7 +55,7 @@ export class AIController {
           'Every question not about my developer costs him a bunch of money! 💸 Do you want to ask something about Vlad?',
         ];
                 
-        if (count >= 1) {
+        if (count >= 3) {
           res.json({ 
             response: budgetJokes[Math.floor(Math.random() * budgetJokes.length)],
             relevance_warning: true
