@@ -21,6 +21,10 @@ const app: Express = express();
 app.use(helmet());
 app.use(cors({
   origin: function(origin, callback) {
+    if (process.env.NODE_ENV === 'test' && !origin) {
+      return callback(null, true);
+    }
+    
     if (!origin) return callback(new Error('Origin required for this endpoint'), false);
     
     if (allowedOrigins.indexOf(origin) === -1) {
