@@ -21,22 +21,25 @@
         --paddingVerticalSmall: 16px;
     }
 
-    --white: #fff;
-    --black: #000;
-    --ghostWhite: #f1f1fb;
-    --eerieBlack: #1d1d1f;
-    --raisinBlack: #28282a;
-    --taupeGray: #86868b;
-    --royalBlue: #0071e3;
-    --pastelRed: #ff746c;
-    --pastelYellow: #ffee8c;
+    --colorWhite: #fff;
+    --colorBlack: #000;
+    --colorGrayLight: #f1f1fb;
+    --colorDark100: #1d1d1f;
+    --colorDark200: #28282a;
+    --colorGray: #86868b;
+    --colorBlue: #0071e3;
+    --colorBlueLight: #0a85ff;
+    --colorRed: #ff746c;
+    --colorYellow: #ffee8c;
 
-    --bgPrimary: var(--black);
-    --copyPrimary: var(--ghostWhite);
-    --copySecondary: rgba(255,255,255,.6);
-    --btnPrimary: var(--eerieBlack);
-    --btnPrimaryHover: var(--raisinBlack);
-    --btnSecondary: var(--eerieBlack);
-    --btnDanger: var(--pastelRed);
-    --linkPrimary: var(--royalBlue);
+    --bgPrimary: var(--colorBlack);
+    --copyPrimary: var(--colorGrayLight);
+    --copySecondary: rgba(255, 255, 255, .6);
+    --btnPrimary: var(--colorDark100);
+    --btnPrimaryHover: var(--colorDark200);
+    --btnSecondary: var(--colorDark100);
+    --btnSecondaryHover: var(--colorDark200);
+    --btnSecondary: var(--colorDark100);
+    --btnDanger: var(--colorRed);
+    --linkPrimary: var(--colorBlue);
 }
