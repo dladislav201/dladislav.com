@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { OpenAIService } from '../services/openai.service';
 import { PineconeService } from '../services/pinecone.service';
+import { ChatCompletionMessageParam } from 'openai/resources/chat';
 import xss from 'xss';
 
 export class AIController {
@@ -8,13 +9,16 @@ export class AIController {
   private vectorStore: PineconeService;
   private userRequestCount: Map<string, number>;
   private irrelevantQuestionsCount: Map<string, number>;
+  private userChatHistory: Map<string, ChatCompletionMessageParam[]>;
   private readonly MAX_REQUESTS_PER_USER = 20;
+  private readonly MAX_HISTORY_LENGTH = 6;
 
   constructor() {
     this.aiService = new OpenAIService();
     this.vectorStore = new PineconeService();
     this.irrelevantQuestionsCount = new Map();
     this.userRequestCount = new Map();
+    this.userChatHistory = new Map();
   }
 
   public chat = async (req: Request, res: Response): Promise<void | Response> => {
@@ -23,9 +27,17 @@ export class AIController {
             
       const message = xss(req.body.message);
       const userIP = req.ip || 'unknown';
-            
+
       if (!message) {
         return res.status(400).json({ error: 'Message is required' });
+      }
+
+      const chatHistory = this.userChatHistory.get(userIP) || [];
+      chatHistory.push({ role: 'user', content: message });
+
+      if (chatHistory.length > this.MAX_HISTORY_LENGTH * 2) { 
+        chatHistory.splice(0, 2);
+        console.log('splece');
       }
 
       const requestCount = this.userRequestCount.get(userIP) || 0;
@@ -71,8 +83,11 @@ export class AIController {
       const context = relevantDocs
         .map(doc => doc.metadata?.text)
         .join('\n\n');
-            
-      const response = await this.aiService.generateResponse(message, context);
+
+      const response = await this.aiService.generateResponse(context, chatHistory);
+      
+      chatHistory.push({ role: 'assistant', content: response });
+      this.userChatHistory.set(userIP, chatHistory);
         
       res.json({ 
         response,
