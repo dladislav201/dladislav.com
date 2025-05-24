@@ -1,15 +1,11 @@
+import { getEnvVar } from '@/utils';
 import dotenv from 'dotenv';
-
 dotenv.config();
 
 export const config = {
-  port: process.env.PORT || 3001,
-  openAIKey: process.env.OPENAI_API_KEY!,
-  pineconeKey: process.env.PINECONE_API_KEY!,
-  pineconeIndexName: process.env.PINECONE_INDEX_NAME!,
-  environment: process.env.NODE_ENV || 'development',
+  port: Number(process.env.PORT ?? 3001),
+  environment: process.env.NODE_ENV ?? 'development',
+  openAIKey: getEnvVar('OPENAI_API_KEY'),
+  pineconeKey: getEnvVar('PINECONE_API_KEY'),
+  pineconeIndexName: getEnvVar('PINECONE_INDEX_NAME'),
 };
-
-if (!process.env.OPENAI_API_KEY || !process.env.PINECONE_API_KEY) {
-  throw new Error('Missing required environment variables');
-}
