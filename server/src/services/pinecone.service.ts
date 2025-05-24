@@ -1,5 +1,5 @@
 import { Pinecone } from '@pinecone-database/pinecone';
-import { config } from '../config/env';
+import { config } from '@/config';
 
 export class PineconeService {
   private pinecone: Pinecone;

@@ -1,6 +1,5 @@
-import { OpenAIService } from '../services/openai.service';
-import { PineconeService } from '../services/pinecone.service';
-import { personalInfoData } from '../data/personal-info';
+import { PineconeService, OpenAIService } from '@/services';
+import { personalInfoData } from '@/data/personal-info';
 
 async function seedKnowledgeBase() {
   const openAIService = new OpenAIService();
@@ -8,19 +7,15 @@ async function seedKnowledgeBase() {
 
   try {
     await pineconeService.initialize();
-        
+
     for (const info of personalInfoData) {
       const embedding = await openAIService.generateEmbedding(info.text);
-            
-      await pineconeService.upsertVector(
-        info.id,
-        embedding,
-        {
-          text: info.text,
-          category: info.category,
-          ...info.metadata
-        }
-      );
+
+      await pineconeService.upsertVector(info.id, embedding, {
+        text: info.text,
+        category: info.category,
+        ...info.metadata,
+      });
     }
   } catch (error) {
     console.error('Error seeding knowledge base:', error);

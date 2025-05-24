@@ -1,6 +1,6 @@
 import OpenAI from 'openai';
 import { ChatCompletionMessageParam } from 'openai/resources/chat';
-import { config } from '../config/env';
+import { config } from '@/config';
 
 export class OpenAIService {
   private openai: OpenAI;
@@ -25,8 +25,8 @@ export class OpenAIService {
   }
 
   async generateResponse(
-    context: string, 
-    chatHistory: ChatCompletionMessageParam[]
+    context: string,
+    chatHistory: ChatCompletionMessageParam[],
   ): Promise<string> {
     try {
       const messages: ChatCompletionMessageParam[] = [
@@ -66,7 +66,7 @@ export class OpenAIService {
             "I'm an AI assistant specifically designed to talk about Vladyslav's portfolio and experience. I'd be 
             happy to tell you about his skills, projects, or background!"`,
         },
-        ...chatHistory
+        ...chatHistory,
       ];
 
       const response = await this.openai.chat.completions.create({
