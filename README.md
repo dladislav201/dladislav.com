@@ -1,11 +1,10 @@
 # dladislav.com Monorepo
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![CI](https://github.com/dladislav201/dladislav.com/actions/workflows/ci.yml/badge.svg)](https://github.com/dladislav201/dladislav.com/actions/workflows/ci.yml)
 [![Vercel Deployment](https://img.shields.io/github/deployments/dladislav201/dladislav.com/production?label=vercel&logo=vercel)](https://dladislav.com)
 
-> Personal portfolio website monorepo.
+> Personal portfolio website with AI integration.
 
 [Live Website](https://dladislav.com)
 
@@ -30,8 +29,8 @@ dladislav.com/
 
 #### Backend
 
-- [Node.js]
-- [Express]
+- [Node.js](https://nodejs.org/)
+- [Express](https://expressjs.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [OpenAI API Integration](https://platform.openai.com/docs/api-reference)
 - [Pinecone](https://www.pinecone.io/)
@@ -48,27 +47,42 @@ dladislav.com/
 
 - Node.js (version 18 or later)
 - npm
+- Docker
+- OpenAI API key
+- Pinecone API key (optional)
 
 ### Installation
 
 1. Clone the repository
 
-`s
+```bash
+git clone https://github.com/dladislav201/dladislav.com.git
+cd dladislav.com
+```
 
 2. Install dependencies
 
 ```bash
 npm install
-# or
-yarn
 ```
+
+3. Set Up Environment Variables
+
+Create `.env` files for `server/` directory based on the provided `.env.example` templates.
+
+4. Run the Application in Development Mode
+
+```bash
+npm run dev
+```
+
+5. The website will be available in your browser at [http://localhost:3000](http://localhost:3000)
 
 ## Available Scripts
 
-- `npm run dev:web` - Start frontend development server
-- `npm run dev:server` - Start backend development server
 - `npm run build` - Build all projects
 - `npm run test` - Run all tests
+- `npm run dev` - Run web/ and server/ simultaneously in development mode
 
 ## License
 
@@ -76,5 +90,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Vladyslav Dobrodii - [dobrodii.vlad200@gmail.com](mailto:dobrodii.vlad200@gmail.com)
-Project Link: [https://github.com/dladislav201/dladislav.com](https://github.com/dladislav201/dladislav.com)
+**Vladyslav Dobrodii**
+[dobrodii.vlad200@gmail.com](mailto:dobrodii.vlad200@gmail.com)
+[LinkedIn](https://www.linkedin.com/in/vladyslav-dobrodii-20384a233/)
+[GitHub Repository](https://github.com/dladislav201/dladislav.com)
