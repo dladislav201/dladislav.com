@@ -1,8 +1,8 @@
 import { ChatResponse } from '@/moddels';
 
-const API_URL = 
-  process.env.NODE_ENV === 'development' 
-    ? 'http://localhost:3001' 
+const API_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3001'
     : process.env.NEXT_PUBLIC_API_URL;
 
 export async function sendChatMessage(message: string): Promise<ChatResponse> {
@@ -17,7 +17,9 @@ export async function sendChatMessage(message: string): Promise<ChatResponse> {
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.error || `Error ${response.status}: Failed to get response from AI`);
+      throw new Error(
+        errorData.error || `Error ${response.status}: Failed to get response from AI`,
+      );
     }
 
     return await response.json();
