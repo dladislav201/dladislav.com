@@ -1,6 +1,6 @@
 # AI Assistant Backend
 
-> Backend service for a personal portfolio AI assistant that answers questions about Vladyslav Dobrodii's professional experience and skills using OpenAI API and vector search.
+> Backend service for a personal portfolio AI assistant that answers questions about Vladyslav Dobrodii's professional experience and skills using OpenAI API and Pinecone.
 
 ## Tech Stack
 
@@ -11,12 +11,13 @@
 - [Pinecone](https://www.pinecone.io/)
 - [Jest](https://jestjs.io/)
 
-## Setup
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
-- npm or yarn
+- Node.js (version 18 or later)
+- npm
+- Docker
 - OpenAI API key
 - Pinecone API key (optional)
 
@@ -33,19 +34,9 @@ cd dladislav.com/server
 
 ```bash
 npm install
-# or
-yarn
 ```
 
-3. Create a `.env` file in the root directory with the following variables:
-
-```
-PORT=3001
-NODE_ENV=development
-OPENAI_API_KEY=your_openai_key_here
-PINECONE_API_KEY=your_pinecone_key_here
-PINECONE_INDEX_NAME=portfolio-knowledge  # Optional
-```
+3. Create a `.env` file in the root directory based on the provided `.env.example` templates.
 
 4. Seed the knowledge base:
 
@@ -53,29 +44,10 @@ PINECONE_INDEX_NAME=portfolio-knowledge  # Optional
 npm run seed
 ```
 
-### Development
-
-Run the development server:
+5. Run the Application in Development Mode
 
 ```bash
 npm run dev
-```
-
-### Build
-
-Compile TypeScript to JavaScript:
-
-```bash
-npm run build
-```
-
-### Testing
-
-Run tests:
-
-```bash
-npm test                # Run all tests
-npm run test:integration # Run integration tests only
 ```
 
 ## API Endpoints
@@ -88,8 +60,6 @@ POST /api/ai/chat
 
 **Request Body:**
 
-json
-
 ```json
 {
   "message": "What technologies does Vladyslav know?"
@@ -97,8 +67,6 @@ json
 ```
 
 **Response:**
-
-json
 
 ```json
 {
@@ -111,25 +79,6 @@ json
     }
   ]
 }
-```
-
-## Project Structure
-
-```
-server/
-├── src/
-│   ├── config/         # Environment configuration
-│   ├── controllers/    # Request handlers
-│   ├── data/           # Personal information data
-│   ├── routes/         # API routes
-│   ├── services/       # Business logic
-│   ├── scripts/        # Utility scripts
-│   ├── __tests__/      # Test files
-│   └── index.ts        # Entry point
-├── jest.config.js      # Jest configuration
-├── .env                # Environment variables
-├── tsconfig.json       # TypeScript configuration
-└── package.json        # Dependencies and scripts
 ```
 
 ## Available Scripts
@@ -146,11 +95,9 @@ server/
 - `npm run test:integration` - Run integration tests
 - `npm run seed` - Seed knowledge base for AI
 
-## Security Measures
+## Contact
 
-- Helmet for secure HTTP headers
-- CORS configuration
-- Rate limiting
-- Request size limits
-- Timeout handling
-- Input validation
+**Vladyslav Dobrodii**
+[dobrodii.vlad200@gmail.com](mailto:dobrodii.vlad200@gmail.com)
+[LinkedIn](https://www.linkedin.com/in/vladyslav-dobrodii-20384a233/)
+[GitHub Repository](https://github.com/dladislav201/dladislav.com)

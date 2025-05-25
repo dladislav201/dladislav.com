@@ -1,14 +1,18 @@
 {
-    "compilerOptions": {
-        "target": "es2020",
-        "module": "commonjs",
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-        "outDir": "./dist",
-        "rootDir": "./src"
-    },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules"]
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "rootDir": "src",
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@types/express-serve-static-core": ["./node_modules/@types/express-serve-static-core"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*", "jest.setup.ts"],
+  "exclude": ["node_modules"]
 }

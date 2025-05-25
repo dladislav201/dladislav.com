@@ -13,32 +13,35 @@ export default tseslint.config(
       '@stylistic': stylistic,
     },
     rules: {
+      'eol-last': 'off',
       'no-console': 'warn',
       'no-unused-vars': 'warn',
-      
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/no-unused-vars': ['warn', { 
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_'
-      }],
-
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
       '@stylistic/indent': ['error', 2],
       '@stylistic/quotes': ['error', 'single'],
       '@stylistic/semi': ['error', 'always'],
-      '@stylistic/max-len': ['warn', { 
-        code: 120, 
-        ignoreComments: true,
-        ignoreStrings: true 
-      }],
-
+      '@stylistic/max-len': [
+        'warn',
+        {
+          code: 120,
+          ignoreComments: true,
+          ignoreStrings: true,
+        },
+      ],
       'no-eval': 'error',
       'no-implied-eval': 'error',
     },
-    
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
-    }
-  }
+    },
+  },
 );
