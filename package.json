@@ -10,14 +10,18 @@
     "test:server": "npm run test --workspace=server",
     "build:web": "npm run build --workspace=web",
     "build:server": "npm run build --workspace=server",
+    "dev:web": "npm run dev --workspace=web",
+    "dev:server": "npm run dev --workspace=server",
     "test": "npm run test:web && npm run test:server",
-    "build": "npm run build:web && npm run build:server"
+    "build": "npm run build:web && npm run build:server",
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:server\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-prettier": "^5.2.6",
     "prettier": "^3.5.3"
