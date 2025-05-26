@@ -1,6 +1,35 @@
 {
   "name": "dladislav.com",
   "version": "1.0.0",
+  "description": "Personal portfolio website with AI integration.",
+  "author": "Dobrodii Vladyslav <dobrodii.vlad200@gmail.com>",
+  "keywords": [
+    "cv",
+    "resume",
+    "portfolio",
+    "personal-website",
+    "developer-cv",
+    "frontend-developer",
+    "fullstack",
+    "web-developer",
+    "software-engineer",
+    "personal-site",
+    "online-resume",
+    "tech-profile",
+    "interactive-cv",
+    "homepage",
+    "ai",
+    "openai",
+    "gpt-4",
+    "gpt-4o",
+    "next",
+    "nextjs",
+    "react",
+    "node",
+    "typescript"
+  ],
+  "license": "MIT",
+  "private": false,
   "workspaces": [
     "web",
     "server"
@@ -16,10 +45,6 @@
     "build": "npm run build:web && npm run build:server",
     "dev": "concurrently \"npm run dev:web\" \"npm run dev:server\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
     "concurrently": "^9.1.2",
     "eslint-config-prettier": "^10.1.2",
