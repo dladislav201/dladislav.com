@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { ChatMessage } from '@/moddels';
-import { sendChatMessage } from '@/lib';
+import { ChatMessage } from '@/types/ai';
+import { sendChatMessage } from '@/lib/aiService';
+import { getErrorMessage } from '@/utils/getErrorMessage';
+import { AuthError, ChatError, RateLimitError } from '@/errors/ChatErrors';
 
 export function useChatMessages() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: 'welcome',
-      content: "Hello! I'm an AI assistant for Vladyslav's portfolio. How can I help you?",
+      content:
+        "Hello! I'm an AI assistant for Vladyslav's portfolio. How can I help you?",
       role: 'assistant',
       timestamp: new Date(),
     },
@@ -41,17 +44,19 @@ export function useChatMessages() {
 
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (err: unknown) {
-      const friendlyErrorMessage =
-        "Sorry, I couldn't process your request. Please try again later.";
-
-      const detailedErrorMessage =
-        err instanceof Error ? err.message : 'Failed to get a response. Please try again.';
-
-      const errorToShow =
-        process.env.NODE_ENV === 'production' ? friendlyErrorMessage : detailedErrorMessage;
-
-      setError(errorToShow);
-      console.error('Error in AI Chat:', err);
+      if (
+        err instanceof RateLimitError ||
+        err instanceof AuthError ||
+        err instanceof ChatError
+      ) {
+        setError(err.message);
+      } else {
+        setError(
+          getErrorMessage(err, {
+            map: { 500: 'Internal server error. Please try again later.' },
+          }),
+        );
+      }
     } finally {
       setIsLoading(false);
     }
@@ -61,6 +66,6 @@ export function useChatMessages() {
     messages,
     isLoading,
     error,
-    sendMessage: handleSendMessage
+    sendMessage: handleSendMessage,
   };
 }
