@@ -1,5 +1,7 @@
-import { PineconeService, OpenAIService } from '@/services';
-import { personalInfoData } from '@/data/personal-info';
+import { OpenAIService } from '@/services/openai.service';
+import { PineconeService } from '@/services/pinecone.service';
+import { personalInfoData } from '@/data/personalInfo';
+import { logger } from '@/utils/logger';
 
 async function seedKnowledgeBase() {
   const openAIService = new OpenAIService();
@@ -17,9 +19,13 @@ async function seedKnowledgeBase() {
         ...info.metadata,
       });
     }
-  } catch (error) {
-    console.error('Error seeding knowledge base:', error);
+  } catch (err) {
+    logger.error('Error seeding knowledge base: %o', err);
   }
 }
 
-seedKnowledgeBase().catch(console.error);
+seedKnowledgeBase()
+  .then(() => logger.info('Seeding finished successfully'))
+  .catch((err) =>
+    logger.error('Unhandled error seeding knowledge base: %o', err),
+  );
