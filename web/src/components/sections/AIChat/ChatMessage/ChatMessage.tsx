@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChatMessage as ChatMessageType } from '@/types/ai';
+import { ChatMessage as ChatMessageType } from '@/core/models/ai';
 import { ChatBubble } from '../ChatBubble';
 import classNames from 'classnames';
 import './ChatMessage.scss';

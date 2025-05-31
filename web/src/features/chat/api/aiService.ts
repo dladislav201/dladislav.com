@@ -1,10 +1,6 @@
-import { AuthError, ChatError, RateLimitError } from '@/errors/ChatErrors';
-import { ChatResponse } from '@/types/ai';
-
-const API_URL =
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3001'
-    : process.env.NEXT_PUBLIC_API_URL;
+import { AuthError, ChatError, RateLimitError } from '@/core/errors/ChatErrors';
+import { ChatResponse } from '@/core/models/ai';
+import { API_URL } from '@/core/constants';
 
 export async function sendChatMessage(message: string): Promise<ChatResponse> {
   const res = await fetch(`${API_URL}/api/ai/chat`, {

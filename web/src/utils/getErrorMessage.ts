@@ -5,6 +5,18 @@ export interface ErrorOptions {
   t?: (key: string) => string;
 }
 
+interface HasStatus {
+  status: number | string;
+}
+
+function isHasStatus(err: unknown): err is HasStatus {
+  return (
+    typeof err === 'object' &&
+    err !== null &&
+    Object.prototype.hasOwnProperty.call(err, 'status')
+  );
+}
+
 export function getErrorMessage(err: unknown, opts: ErrorOptions = {}) {
   const {
     fallback = 'Sorry, something went wrong. Please try again later.',
@@ -13,14 +25,14 @@ export function getErrorMessage(err: unknown, opts: ErrorOptions = {}) {
     t = (s) => s,
   } = opts;
 
-  const key =
-    (typeof err === 'object' &&
-      err &&
-      'status' in err &&
-      (err as any).status) ||
-    (err instanceof Error && err.name);
+  let key: number | string | undefined;
+  if (isHasStatus(err)) {
+    key = err.status;
+  } else if (err instanceof Error) {
+    key = err.name;
+  }
 
-  if (key && map[key]) return t(map[key]);
+  if (key !== undefined && map[key]) return t(map[key]);
   if (devMode && err instanceof Error) return t(err.message);
 
   return t(fallback);

@@ -44,7 +44,7 @@ export const TerminalTyping = ({
         window.cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [message]);
+  }, [message, onTypingComplete]);
 
   return (
     <div className={`terminal ${className}`}>
@@ -52,7 +52,9 @@ export const TerminalTyping = ({
         <TextWithParagraphs text={text} />
       </span>
       <span
-        className={classNames('terminal__cursor', { 'terminal__cursor--blink': isTypingComplete })}
+        className={classNames('terminal__cursor', {
+          'terminal__cursor--blink': isTypingComplete,
+        })}
       />
     </div>
   );

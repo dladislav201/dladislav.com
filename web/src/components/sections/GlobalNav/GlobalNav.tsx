@@ -5,7 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 import classNames from 'classnames';
 import { Wrapper, Curtain } from '@/components';
 import { DesktopMenu, MobileMenu } from './components';
-import { useResponsive } from '@/hooks';
+import { useResponsive } from '@/core/hooks/useResponsive';
 import './GlobalNav.scss';
 
 export const Globalnav = () => {
@@ -136,7 +136,9 @@ export const Globalnav = () => {
         </Wrapper>
       </nav>
       <AnimatePresence>
-        {isMobile && isMenuOpen && <Curtain onCurtainClick={toggleNav} disableOnDesktop />}
+        {isMobile && isMenuOpen && (
+          <Curtain onCurtainClick={toggleNav} disableOnDesktop />
+        )}
       </AnimatePresence>
     </>
   );
