@@ -62,9 +62,7 @@ export const Globalnav = () => {
       >
         <Wrapper fullHeight>
           <div className="globalnav__content">
-            {!isMobile && <DesktopMenu />}
-
-            {isMobile && <MobileMenu isOpen={isMenuOpen} />}
+            {isMobile ? <MobileMenu isOpen={isMenuOpen} /> : <DesktopMenu />}
 
             <div className="globalnav__burger">
               <button className="globalnav__burger-btn" onClick={toggleNav}>
