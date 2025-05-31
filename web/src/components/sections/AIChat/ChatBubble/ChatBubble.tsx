@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChatMessage } from '@/moddels';
+import { ChatMessage } from '@/types/ai';
 import './ChatBubble.scss';
 
 interface ChatBubbleProps {
