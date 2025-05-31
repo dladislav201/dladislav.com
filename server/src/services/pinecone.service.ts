@@ -1,4 +1,5 @@
 import { Pinecone } from '@pinecone-database/pinecone';
+import { logger } from '@/utils/logger';
 import { config } from '@/config';
 
 export class PineconeService {
@@ -16,9 +17,9 @@ export class PineconeService {
     try {
       const index = this.pinecone.Index(this.indexName);
       return index;
-    } catch (error) {
-      console.error('Error initializing Pinecone:', error);
-      throw error;
+    } catch (err) {
+      logger.error('Error initializing Pinecone: %o', err);
+      throw err;
     }
   }
 
@@ -32,9 +33,9 @@ export class PineconeService {
           metadata,
         },
       ]);
-    } catch (error) {
-      console.error('Error upserting vector:', error);
-      throw error;
+    } catch (err) {
+      logger.error('Error upserting vector: %o', err);
+      throw err;
     }
   }
 
@@ -47,9 +48,9 @@ export class PineconeService {
         includeMetadata: true,
       });
       return results.matches;
-    } catch (error) {
-      console.error('Error querying vector:', error);
-      throw error;
+    } catch (err) {
+      logger.error('Error querying vector: %o', err);
+      throw err;
     }
   }
 }

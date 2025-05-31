@@ -1,3 +1,4 @@
+import { ApiError } from '@/types/apiError';
 import { Request, Response, NextFunction } from 'express';
 import Joi from 'joi';
 
@@ -7,17 +8,19 @@ const chatSchema = Joi.object({
 
 export const validateChatRequest = (
   req: Request,
-  res: Response,
+  _res: Response,
   next: NextFunction,
-): void | Response => {
+): void => {
   const { error } = chatSchema.validate(req.body);
 
   if (error) {
-    return res.status(400).json({
-      error: 'Invalid request',
+    const validationError: ApiError = {
+      status: 400,
+      code: 'VALIDATION_ERROR',
+      message: 'Invalid request to /api/ai/chat',
       details: error.details[0].message,
-      type: 'ValidationError',
-    });
+    };
+    return next(validationError);
   }
 
   next();
