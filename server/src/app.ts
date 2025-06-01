@@ -24,8 +24,9 @@ app.use(
         return callback(null, true);
       }
 
-      if (!origin)
+      if (!origin) {
         return callback(new Error('Origin required for this endpoint'), false);
+      }
 
       if (allowedOrigins.indexOf(origin) === -1) {
         return callback(new Error('CORS policy violation'), false);
