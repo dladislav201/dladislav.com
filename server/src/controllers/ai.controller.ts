@@ -17,7 +17,7 @@ export class AIController {
   private readonly RELEVANCE_THRESHOLD = 0.4;
   private readonly MAX_IRRELEVANT_WARNINGS = 3;
   private readonly BUDGET_JOKES = [
-    "Hey, I'm not a free ChatGPT! Vlad is running out of budget to support me, so let's talk about him for a bit 😉",
+    'Hey, I’m not a free ChatGPT! Vlad is running out of budget to support me, so let’s talk about him for a bit 😉',
     'Every question not about my developer costs him a bunch of money! 💸 Do you want to ask something about Vlad?',
   ];
 
@@ -27,7 +27,7 @@ export class AIController {
     next: NextFunction,
   ): Promise<void> => {
     const userIP = req.ip || 'unknown';
-    let message = xss(req.body.message);
+    const message = xss(req.body.message);
 
     try {
       await this.vectorStore.initialize();
