@@ -27,29 +27,18 @@ export class AIController {
     next: NextFunction,
   ): Promise<void> => {
     const userIP = req.ip || 'unknown';
-    let message: string;
+    let message = xss(req.body.message);
 
     try {
       await this.vectorStore.initialize();
 
-      message = xss(req.body.message);
-      if (!message) {
+      if (this.isRateLimitExceeded(userIP)) {
         const err: ApiError = {
-          status: 400,
-          code: 'BAD_REQUEST',
-          message: 'Message is required',
+          status: 429,
+          code: 'RATE_LIMIT_EXCEEDED',
+          message: `You have reached your limit of ${this.MAX_REQUESTS_PER_USER} questions. Thank you for your interest!`,
         };
         next(err);
-        return;
-      }
-
-      if (this.isRateLimitExceeded(userIP)) {
-        res.status(429).json({
-          error: 'RATE_LIMIT_EXCEEDED',
-          message: `
-            You have reached your limit of ${this.MAX_REQUESTS_PER_USER} questions. Thank you for your interest!
-          `,
-        });
         return;
       }
 
@@ -60,7 +49,6 @@ export class AIController {
       this.trimChatHistoryIfNeeded(userIP);
 
       const queryEmbedding = await this.aiService.generateEmbedding(message);
-
       const relevantDocs = await this.vectorStore.queryVector(
         queryEmbedding,
         3,
