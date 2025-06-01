@@ -4,8 +4,8 @@ import React, { useEffect, useRef } from 'react';
 import { ChatField } from '../ChatField';
 import { ChatMessage } from '../ChatMessage';
 import { Wrapper } from '@/components';
-import { promptTips } from '@/data';
-import { useChatMessages } from '@/hooks';
+import { promptTips } from '@/core/constants';
+import { useChatMessages } from '@/features/chat/hooks/useChatMessages';
 import { motion } from 'framer-motion';
 import { X, Lightbulb } from 'lucide-react';
 import './ChatContainer.scss';
@@ -22,7 +22,11 @@ export function ChatContainer({ onCloseBtnClick }: ChatContainerProps) {
 
   useEffect(() => {
     const updatePadding = () => {
-      if (inputWrapper.current && chatContentRef.current && chatCurtainRef.current) {
+      if (
+        inputWrapper.current &&
+        chatContentRef.current &&
+        chatCurtainRef.current
+      ) {
         const height = inputWrapper.current.offsetHeight;
         chatContentRef.current.style.paddingBottom = `${height}px`;
         chatCurtainRef.current.style.height = `${height}px`;
@@ -66,7 +70,11 @@ export function ChatContainer({ onCloseBtnClick }: ChatContainerProps) {
       animate="show"
       exit="exit"
     >
-      <button className="chat__close-button" onClick={onCloseBtnClick} title="Close chat">
+      <button
+        className="chat__close-button"
+        onClick={onCloseBtnClick}
+        title="Close chat"
+      >
         <X size={20} strokeWidth={2} />
       </button>
       <Wrapper fullHeight>
@@ -77,7 +85,11 @@ export function ChatContainer({ onCloseBtnClick }: ChatContainerProps) {
             {messages.length < 2 && (
               <ul className="chat__tips">
                 {promptTips.map((tip, index) => (
-                  <li key={index} className="chat__tip" onClick={() => sendMessage(tip)}>
+                  <li
+                    key={index}
+                    className="chat__tip"
+                    onClick={() => sendMessage(tip)}
+                  >
                     <Lightbulb size={14} strokeWidth={2} />
                     {tip}
                   </li>
@@ -102,11 +114,12 @@ export function ChatContainer({ onCloseBtnClick }: ChatContainerProps) {
             <ChatField onSendMessage={sendMessage} isLoading={isLoading} />
             <div className="chat__disclaimer">
               <p className="chat__disclaimer-copy">
-                This chat uses artificial intelligence technology powered by OpenAI. Responses are
-                generated automatically and may not always be accurate. Do not rely on this system
-                for medical, legal, financial, or other professional advice. Your messages may be
-                processed by OpenAI&apos;s API to generate responses. By using this chat, you
-                acknowledge these limitations.
+                This chat uses artificial intelligence technology powered by
+                OpenAI. Responses are generated automatically and may not always
+                be accurate. Do not rely on this system for medical, legal,
+                financial, or other professional advice. Your messages may be
+                processed by OpenAI&apos;s API to generate responses. By using
+                this chat, you acknowledge these limitations.
               </p>
             </div>
           </div>

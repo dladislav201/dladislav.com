@@ -1,5 +1,6 @@
 import OpenAI from 'openai';
 import { ChatCompletionMessageParam } from 'openai/resources/chat';
+import { logger } from '@/utils/logger';
 import { config } from '@/config';
 
 export class OpenAIService {
@@ -18,9 +19,9 @@ export class OpenAIService {
         input: text,
       });
       return response.data[0].embedding;
-    } catch (error) {
-      console.error('Error generating embedding:', error);
-      throw error;
+    } catch (err) {
+      logger.error('Error generating embedding: %o', err);
+      throw err;
     }
   }
 
@@ -76,10 +77,13 @@ export class OpenAIService {
         max_tokens: 500,
       });
 
-      return response.choices[0].message.content || 'Sorry, I could not generate a response.';
-    } catch (error) {
-      console.error('Error generating response:', error);
-      throw error;
+      return (
+        response.choices[0].message.content ||
+        'Sorry, I could not generate a response.'
+      );
+    } catch (err) {
+      logger.error('Error generating response: %o', err);
+      throw err;
     }
   }
 }

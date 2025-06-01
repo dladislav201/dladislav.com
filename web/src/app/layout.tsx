@@ -1,21 +1,22 @@
-import type { Metadata } from "next";
-import { IBM_Plex_Mono } from "next/font/google";
-import { Globalnav, Footer } from "@/components";
+import type { Metadata } from 'next';
+import { IBM_Plex_Mono } from 'next/font/google';
+import { Globalnav, Footer } from '@/components';
+import '@/app/styles/utils/_variables.scss';
+import '@/app/styles/utils/_keyframes.scss';
+import '@/app/styles/global.scss';
 
-import "@/app/styles/utils/_variables.scss";
-import "@/app/styles/utils/_keyframes.scss";
-import "@/app/styles/global.scss";
+import { ReduxProvider } from '@/store/provider';
 
 const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-ibm-plex-mono",
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600"],
+  variable: '--font-ibm-plex-mono',
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600'],
 });
 
 export const metadata: Metadata = {
-  title: "Vladyslav Dobrodii",
-  creator: "dladislav",
-  publisher: "dladislav",
+  title: 'Vladyslav Dobrodii',
+  creator: 'dladislav',
+  publisher: 'dladislav',
   robots: {
     index: true,
     follow: true,
@@ -26,16 +27,16 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    siteName: "Vladyslav Dobrodii",
-    type: "website",
+    siteName: 'Vladyslav Dobrodii',
+    type: 'website',
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-    shortcut: "/favicon.ico",
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+    shortcut: '/favicon.ico',
   },
   alternates: {
-    canonical: "https://www.dladislav.com",
+    canonical: 'https://www.dladislav.com',
   },
 };
 
@@ -47,12 +48,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${ibmPlexMono.variable}`}>
-        <Globalnav />
-        {children}
-        <Footer />
-        <a rel="me" href="https://mastodon.social/@dladislav" hidden>
-          Mastodon
-        </a>
+        <ReduxProvider>
+          <Globalnav />
+          {children}
+          <Footer />
+          <a rel="me" href="https://mastodon.social/@dladislav" hidden>
+            Mastodon
+          </a>
+        </ReduxProvider>
       </body>
     </html>
   );

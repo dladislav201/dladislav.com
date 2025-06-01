@@ -1,23 +1,26 @@
+import { ApiError } from '@/types/apiError';
 import { Request, Response, NextFunction } from 'express';
-import Joi from 'joi';
+import { z } from 'zod';
 
-const chatSchema = Joi.object({
-  message: Joi.string().min(1).max(500).required(),
+const chatSchema = z.object({
+  message: z.string().min(1).max(500),
 });
 
 export const validateChatRequest = (
   req: Request,
-  res: Response,
+  _res: Response,
   next: NextFunction,
-): void | Response => {
-  const { error } = chatSchema.validate(req.body);
+): void => {
+  const result = chatSchema.safeParse(req.body);
 
-  if (error) {
-    return res.status(400).json({
-      error: 'Invalid request',
-      details: error.details[0].message,
-      type: 'ValidationError',
-    });
+  if (!result.success) {
+    const validationError: ApiError = {
+      status: 400,
+      code: 'VALIDATION_ERROR',
+      message: 'Invalid request to /api/ai/chat',
+      details: result.error.errors[0].message,
+    };
+    return next(validationError);
   }
 
   next();

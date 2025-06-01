@@ -1,8 +1,11 @@
 import { config } from '@/config';
 import { app } from './app';
+import { logger } from './utils/logger';
 
-const server = app.listen(config.port, () => {
-  console.log(`Server running on port ${config.port}`);
+const PORT = config.port;
+
+const server = app.listen(PORT, () => {
+  logger.info('Server started on port %d', PORT);
 });
 
 export { server };

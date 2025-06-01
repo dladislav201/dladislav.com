@@ -43,7 +43,7 @@
     "dev:server": "npm run dev --workspace=server",
     "test": "npm run test:web && npm run test:server",
     "build": "npm run build:web && npm run build:server",
-    "dev": "concurrently \"npm run dev:web\" \"npm run dev:server\""
+    "dev": "concurrently --names \"web,server\" --prefix \"[{name}]\" -c \"magenta,blue\" \"npm run dev:web\" \"npm run dev:server\""
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
