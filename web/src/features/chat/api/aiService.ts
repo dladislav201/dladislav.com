@@ -1,5 +1,5 @@
 import { AuthError, ChatError, RateLimitError } from '@/core/errors/ChatErrors';
-import { ChatResponse } from '@/core/models/ai';
+import { ChatResponse } from '@/core/models/chat';
 import { API_URL } from '@/core/constants';
 
 export async function sendChatMessage(message: string): Promise<ChatResponse> {

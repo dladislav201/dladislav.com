@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ChatMessage } from '@/core/models/ai';
+import { ChatMessage } from '@/core/models/chat';
 import { sendMessageThunk } from './chatThunk';
 import { v4 as uuidv4 } from 'uuid';
 

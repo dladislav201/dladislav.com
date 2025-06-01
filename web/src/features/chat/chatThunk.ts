@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ChatMessage, ChatResponse } from '@/core/models/ai';
+import { ChatMessage, ChatResponse } from '@/core/models/chat';
 import { AuthError, ChatError, RateLimitError } from '@/core/errors/ChatErrors';
 import { getErrorMessage } from '@/utils/getErrorMessage';
 import { sendChatMessage } from './api/aiService';
@@ -11,22 +11,24 @@ interface SendMessageResult {
 
 type SendMessageArgs = string;
 
+interface SendMessageConfig {
+  rejectValue: string;
+}
+
 export const sendMessageThunk = createAsyncThunk<
   SendMessageResult,
   SendMessageArgs,
-  {
-    rejectValue: string;
-  }
+  SendMessageConfig
 >('chat/sendMessage', async (text: string, { rejectWithValue }) => {
   try {
     const result: ChatResponse = await sendChatMessage(text);
-    const aiMsg: ChatMessage = {
+    const aiMessage: ChatMessage = {
       id: uuidv4(),
       content: result.response,
       role: 'assistant',
       timestamp: new Date().toISOString(),
     };
-    return { aiMessage: aiMsg };
+    return { aiMessage };
   } catch (err) {
     if (err instanceof RateLimitError) {
       return rejectWithValue(`Rate limit: ${err.message}`);
