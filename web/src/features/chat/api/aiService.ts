@@ -1,6 +1,6 @@
-import { AuthError, ChatError, RateLimitError } from '@/core/errors/ChatErrors';
-import { ChatResponse } from '@/core/models/chat';
-import { API_URL } from '@/core/constants';
+import { AuthError, ChatError, RateLimitError } from './error';
+import { ChatResponse } from '@/entities/chat/model/types';
+import { API_URL } from '@/shared/constants';
 
 export async function sendChatMessage(message: string): Promise<ChatResponse> {
   const res = await fetch(`${API_URL}/api/ai/chat`, {

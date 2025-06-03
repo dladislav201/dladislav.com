@@ -1,4 +1,4 @@
-import { HomeComponent } from '@/components';
+import { HomeComponent } from '@/widgets/home/ui';
 
 export default function HomePage() {
   return (

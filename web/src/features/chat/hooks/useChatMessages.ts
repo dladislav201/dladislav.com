@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { sendMessageThunk } from '../chatThunk';
-import { addUserMessage, clearError } from '../chatSlice';
+import { useAppDispatch, useAppSelector } from '@/shared/config/store/hooks';
+import { sendMessageThunk } from '../model/chatThunk';
+import { addUserMessage, clearError } from '../model/chatSlice';
 import {
   selectChatMessages,
   selectChatIsLoading,
   selectChatError,
-} from '../chatSelectors';
+} from '../model/chatSelectors';
 
 export function useChatMessages() {
   const dispatch = useAppDispatch();
