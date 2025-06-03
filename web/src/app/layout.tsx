@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
 import { IBM_Plex_Mono } from 'next/font/google';
-import { Globalnav, Footer } from '@/components';
-import '@/app/styles/utils/_variables.scss';
-import '@/app/styles/utils/_keyframes.scss';
-import '@/app/styles/global.scss';
 
-import { ReduxProvider } from '@/store/provider';
+import { Footer } from '@/shared/ui';
+import { Globalnav } from '@/widgets/global-nav/ui';
+
+import '@/shared/styles/_variables.scss';
+import '@/shared/styles/_keyframes.scss';
+import '@/shared/styles/global.scss';
+
+import { ReduxProvider } from '@/shared/config/store/reduxProvider';
 
 const ibmPlexMono = IBM_Plex_Mono({
   variable: '--font-ibm-plex-mono',
