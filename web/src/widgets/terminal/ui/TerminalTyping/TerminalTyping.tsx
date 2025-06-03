@@ -33,7 +33,7 @@ export const TerminalTyping = ({
         animationFrameRef.current = window.requestAnimationFrame(typeText);
       } else {
         setIsTypingComplete(true);
-        if (onTypingComplete) onTypingComplete();
+        onTypingComplete?.();
       }
     };
 

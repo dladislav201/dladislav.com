@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Button, Wrapper } from '@/shared/ui';
 import { TerminalTyping } from '@/widgets/terminal/ui';
-import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
+import { introMsg } from '@/shared/constants';
+import Image from 'next/image';
 import './Hero.scss';
 
 interface HeroProps {
@@ -14,9 +15,9 @@ interface HeroProps {
 export const Hero = ({ onStartChat }: HeroProps) => {
   const [isTypingComplete, setIsTypingComplete] = useState(false);
 
-  const handleTypingComplete = () => {
+  const handleTypingComplete = useCallback(() => {
     setIsTypingComplete(true);
-  };
+  }, []);
 
   const buttonVariants = {
     hidden: {
@@ -51,7 +52,7 @@ export const Hero = ({ onStartChat }: HeroProps) => {
             <span>Hi there</span>, I&apos;m Vlad.
           </h1>
           <TerminalTyping
-            message={`By day (and often late into the night), I build things on the web with React, Vue, TypeScript, and Node.js. Frontend by heart, fullstack when needed. \n\nChess enthusiast on a mission to become a grandmaster. Also passionate about designing and engineering great UI/UX experiences. Want to know more about my work, skills, or experience?`}
+            message={introMsg}
             className="hero__intro"
             onTypingComplete={handleTypingComplete}
           />
