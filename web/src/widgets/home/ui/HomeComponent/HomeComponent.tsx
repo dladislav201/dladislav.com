@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ChatContainer } from '@/features/chat/ui';
+import { ChatContainer } from '@/features/chat';
 import { Hero } from '@/widgets/hero/ui';
 import { Curtain } from '@/shared/ui';
 import { AnimatePresence } from 'framer-motion';
