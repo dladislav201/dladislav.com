@@ -1,7 +1,7 @@
-import { OpenAIService } from '@/services/openai.service';
-import { PineconeService } from '@/services/pinecone.service';
-import { personalInfoData } from '@/data/personalInfo';
-import { logger } from '@/utils/logger';
+import { OpenAIService } from '../src/services/openai.service';
+import { PineconeService } from '../src/services/pinecone.service';
+import { personalInfoData } from './data/personalInfo';
+import { logger } from '../src/shared/lib/logger';
 
 async function seedKnowledgeBase() {
   const openAIService = new OpenAIService();
