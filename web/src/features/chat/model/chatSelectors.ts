@@ -1,5 +1,5 @@
-import type { RootState } from '@/shared/config/store/store';
-import type { ChatMessage } from '@/entities/chat/model/types';
+import type { RootState } from '@/shared/config';
+import type { ChatMessage } from '@/entities/chat';
 
 export const selectChatMessages = (state: RootState): ChatMessage[] =>
   state.chat.messages;
