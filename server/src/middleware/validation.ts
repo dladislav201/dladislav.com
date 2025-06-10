@@ -1,9 +1,13 @@
-import { ApiError } from '@/types/apiError';
 import { Request, Response, NextFunction } from 'express';
+import { ApiError } from '@/shared/types/apiError';
 import { z } from 'zod';
+import {
+  CHAT_MESSAGE_MIN_LENGTH,
+  CHAT_MESSAGE_MAX_LENGTH,
+} from '@/shared/constants';
 
 const chatSchema = z.object({
-  message: z.string().min(1).max(500),
+  message: z.string().min(CHAT_MESSAGE_MIN_LENGTH).max(CHAT_MESSAGE_MAX_LENGTH),
 });
 
 export const validateChatRequest = (
@@ -18,7 +22,6 @@ export const validateChatRequest = (
       status: 400,
       code: 'VALIDATION_ERROR',
       message: 'Invalid request to /api/ai/chat',
-      details: result.error.errors[0].message,
     };
     return next(validationError);
   }
