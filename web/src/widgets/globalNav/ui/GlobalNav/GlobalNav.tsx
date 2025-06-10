@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { Wrapper, Curtain } from '@/shared/ui';
 import { DesktopMenu } from '../DesktopMenu';
 import { MobileMenu } from '../MobileMenu';
-import { useResponsive } from '@/shared/hooks/useResponsive';
+import { useResponsive } from '@/shared/hooks';
 import './GlobalNav.scss';
 
 export const Globalnav = () => {

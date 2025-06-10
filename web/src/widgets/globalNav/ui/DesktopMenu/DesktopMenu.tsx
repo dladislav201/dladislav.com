@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { menuItems } from '@/shared/constants';
+import { menuItems } from '../../model/constants';
 import './DesktopMenu.scss';
 
 export const DesktopMenu = () => {

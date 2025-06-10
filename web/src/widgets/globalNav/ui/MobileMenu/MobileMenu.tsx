@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { menuItems } from '@/shared/constants';
+import { menuItems } from '../../model/constants';
 import './MobileMenu.scss';
 
 interface MobileMenuProps {
