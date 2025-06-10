@@ -8,6 +8,6 @@ describe('AI API Integration', () => {
       .send({ message: 'What technologies does your developer know?' });
 
     expect(response.status).toBe(200);
-    expect(response.body.response).toContain('JavaScript');
+    expect(response.body.reply).toContain('JavaScript');
   }, 30000);
 });
