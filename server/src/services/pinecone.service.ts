@@ -1,6 +1,6 @@
 import { Pinecone } from '@pinecone-database/pinecone';
-import { logger } from '@/utils/logger';
-import { config } from '@/config';
+import { logger } from '@/shared/lib/logger';
+import { config } from '@/shared/config';
 
 export class PineconeService {
   private pinecone: Pinecone;

@@ -1,4 +1,4 @@
-import { getEnvVar } from '@/utils/getEnvVar';
+import { getEnvVar } from '@/shared/lib/getEnvVar';
 import dotenv from 'dotenv';
 dotenv.config();
 

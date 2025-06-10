@@ -4,9 +4,9 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import compression from 'compression';
 import timeout from 'connect-timeout';
-import { globalLimiter, aiLimiter } from '@/utils/rateLimiter';
+import { globalLimiter, aiLimiter } from '@/shared/lib/rateLimiter';
 import { errorHandler } from '@/middleware/errorHandler';
-import { morganStream } from '@/utils/logger';
+import { morganStream } from '@/shared/lib/logger';
 import routes from '@/routes';
 
 const allowedOrigins = [process.env.WEB_URL];

@@ -1,5 +1,5 @@
 import { createLogger, format, transports } from 'winston';
-import { config } from '@/config';
+import { config } from '@/shared/config';
 
 const { combine, timestamp, printf, colorize, splat } = format;
 
