@@ -9,10 +9,12 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@types/express-serve-static-core": ["./node_modules/@types/express-serve-static-core"],
+      "@types/express-serve-static-core": [
+        "./node_modules/@types/express-serve-static-core"
+      ],
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*", "jest.setup.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }

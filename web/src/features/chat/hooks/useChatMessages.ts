@@ -10,7 +10,6 @@ import {
 
 export function useChatMessages() {
   const dispatch = useAppDispatch();
-
   const messages = useAppSelector(selectChatMessages);
   const isLoading = useAppSelector(selectChatIsLoading);
   const error = useAppSelector(selectChatError);

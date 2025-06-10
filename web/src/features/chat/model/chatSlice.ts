@@ -1,24 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ChatMessage } from '@/entities/chat/model/types';
-import { sendMessageThunk } from './chatThunk';
+import { PlainApiError, ApiErrorCode } from '@/shared/api';
+import { sendMessageThunk, loadHistoryThunk } from './chatThunk';
+import { ChatMessage } from '@/entities/chat';
 import { v4 as uuidv4 } from 'uuid';
 
 interface ChatState {
   messages: ChatMessage[];
   isLoading: boolean;
-  error: string | null;
+  error: PlainApiError | null;
 }
 
 const initialState: ChatState = {
-  messages: [
-    {
-      id: 'welcome',
-      content:
-        "Hello! I'm an AI assistant for Vladyslav's portfolio. How can I help you?",
-      role: 'assistant',
-      timestamp: new Date().toISOString(),
-    },
-  ],
+  messages: [],
   isLoading: false,
   error: null,
 };
@@ -31,7 +24,7 @@ const chatSlice = createSlice({
       const userMsg: ChatMessage = {
         id: uuidv4(),
         content: action.payload,
-        role: 'user',
+        role: 'user' as const,
         timestamp: new Date().toISOString(),
       };
       state.messages.push(userMsg);
@@ -49,11 +42,29 @@ const chatSlice = createSlice({
       })
       .addCase(sendMessageThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.messages.push(payload.aiMessage);
+        state.messages.push(payload.aiResponse);
       })
       .addCase(sendMessageThunk.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload ?? 'Unknown error';
+        state.error = payload ?? {
+          code: ApiErrorCode.UNKNOWN,
+          message: 'Unknown error',
+        };
+      })
+      .addCase(loadHistoryThunk.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(loadHistoryThunk.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.messages = payload.chatHistory;
+      })
+      .addCase(loadHistoryThunk.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload ?? {
+          code: ApiErrorCode.UNKNOWN,
+          message: 'Unknown error',
+        };
       });
   },
 });

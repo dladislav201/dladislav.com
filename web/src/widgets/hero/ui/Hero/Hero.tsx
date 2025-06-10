@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react';
 import { Button, Wrapper } from '@/shared/ui';
 import { TerminalTyping } from '@/widgets/terminal/ui';
 import { AnimatePresence, motion } from 'framer-motion';
-import { introMsg } from '@/shared/constants';
+import { INTRO } from '@/shared/constants';
 import Image from 'next/image';
 import './Hero.scss';
 
@@ -52,7 +52,7 @@ export const Hero = ({ onStartChat }: HeroProps) => {
             <span>Hi there</span>, I&apos;m Vlad.
           </h1>
           <TerminalTyping
-            message={introMsg}
+            message={INTRO}
             className="hero__intro"
             onTypingComplete={handleTypingComplete}
           />

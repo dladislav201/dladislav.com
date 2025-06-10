@@ -1,6 +1,6 @@
-import { config } from '@/config';
+import { config } from '@/shared/config';
 import { app } from './app';
-import { logger } from './utils/logger';
+import { logger } from './shared/lib/logger';
 
 const PORT = config.port;
 

@@ -20,6 +20,9 @@ dladislav.com/
 └── README.md
 ```
 
+**[View detailed web application documentation](./web/README.md)**
+**[View detailed server documentation](./server/README.md)**
+
 ## Tech Stack
 
 #### Frontend

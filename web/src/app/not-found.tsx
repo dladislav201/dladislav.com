@@ -1,4 +1,4 @@
-import { NotFoundPage } from '@/features/error/ui';
+import { NotFoundPage } from '@/features/notFound';
 
 export default function NotFound() {
   return (

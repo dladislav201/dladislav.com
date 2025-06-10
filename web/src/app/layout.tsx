@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { IBM_Plex_Mono } from 'next/font/google';
 
 import { Footer } from '@/shared/ui';
-import { Globalnav } from '@/widgets/global-nav/ui';
+import { Globalnav } from '@/widgets/globalNav/ui';
 
 import '@/shared/styles/_variables.scss';
 import '@/shared/styles/_keyframes.scss';
