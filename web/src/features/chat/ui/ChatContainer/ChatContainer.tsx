@@ -4,10 +4,11 @@ import React, { useEffect, useRef } from 'react';
 import { ChatField } from '../ChatField';
 import { ChatMessage } from '../ChatMessage';
 import { Wrapper } from '@/shared/ui';
-import { promptTips } from '@/shared/constants';
-import { useChatMessages } from '@/features/chat/hooks/useChatMessages';
+import { PROMPT_TIPS } from '@/shared/constants';
+import { useChatMessages } from '../../hooks/useChatMessages';
 import { motion } from 'framer-motion';
 import { X, Lightbulb } from 'lucide-react';
+import { INIT_AI_MSG } from '@/shared/constants';
 import './ChatContainer.scss';
 
 interface ChatContainerProps {
@@ -80,21 +81,24 @@ export function ChatContainer({ onCloseBtnClick }: ChatContainerProps) {
       <Wrapper fullHeight>
         <div className="chat__wrapper">
           <div ref={chatContentRef} className="chat__content">
-            {error && <div className="chat__error">{error}</div>}
+            {error && <div className="chat__error">{error.message}</div>}
 
-            {messages.length < 2 && (
-              <ul className="chat__tips">
-                {promptTips.map((tip, index) => (
-                  <li
-                    key={index}
-                    className="chat__tip"
-                    onClick={() => sendMessage(tip)}
-                  >
-                    <Lightbulb size={14} strokeWidth={2} />
-                    {tip}
-                  </li>
-                ))}
-              </ul>
+            {messages.length === 0 && (
+              <div className="chat__intro">
+                <p className="chat__intro-content">{INIT_AI_MSG}</p>
+                <ul className="chat__tips">
+                  {PROMPT_TIPS.map((tip, index) => (
+                    <li
+                      key={index}
+                      className="chat__tip"
+                      onClick={() => sendMessage(tip)}
+                    >
+                      <Lightbulb size={14} strokeWidth={2} />
+                      {tip}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
 
             {isLoading && (
