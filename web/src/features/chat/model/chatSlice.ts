@@ -1,8 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PlainApiError, ApiErrorCode } from '@/shared/api';
-import { sendMessageThunk, loadHistoryThunk } from './chatThunk';
-import { ChatMessage } from '@/entities/chat';
 import { v4 as uuidv4 } from 'uuid';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { sendMessageThunk, loadHistoryThunk } from './chatThunk';
+import { UNKNOWN_API_ERROR } from '@/shared/constants';
+import { ChatMessage } from '@/entities/chat';
+import type { PlainApiError } from '@/shared/api';
 
 interface ChatState {
   messages: ChatMessage[];
@@ -46,10 +47,7 @@ const chatSlice = createSlice({
       })
       .addCase(sendMessageThunk.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload ?? {
-          code: ApiErrorCode.UNKNOWN,
-          message: 'Unknown error',
-        };
+        state.error = payload ?? UNKNOWN_API_ERROR;
       })
       .addCase(loadHistoryThunk.pending, (state) => {
         state.isLoading = true;
@@ -61,10 +59,7 @@ const chatSlice = createSlice({
       })
       .addCase(loadHistoryThunk.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload ?? {
-          code: ApiErrorCode.UNKNOWN,
-          message: 'Unknown error',
-        };
+        state.error = payload ?? UNKNOWN_API_ERROR;
       });
   },
 });

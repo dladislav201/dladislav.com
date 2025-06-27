@@ -4,8 +4,11 @@ import {
   NetworkError,
   ValidationError,
   ApiErrorCode,
-  isApiError,
-} from './errors';
+  ApiError,
+} from './errorDefinitions';
+
+export const isApiError = (e: unknown): e is ApiError =>
+  typeof e === 'object' && e !== null && 'code' in e;
 
 export const isHttpError = (e: unknown): e is HttpError =>
   isApiError(e) && e.code === ApiErrorCode.HTTP;

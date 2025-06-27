@@ -1,7 +1,7 @@
-import { ApiError, ApiErrorCode, HttpError } from './errors';
+import { ApiError, ApiErrorCode, HttpError } from './errorDefinitions';
 import { MSG_MAX_LENGTH } from '@/shared/constants';
 
-export function getFriendlyMessage(err: ApiError): string {
+export function getFriendlyErrMsg(err: ApiError): string {
   switch (err.code) {
     case ApiErrorCode.TIMEOUT:
       return 'The server took too long to respond. Please try again later.';

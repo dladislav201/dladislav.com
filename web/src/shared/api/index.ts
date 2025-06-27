@@ -1,3 +1,4 @@
 export { ApiClient } from './apiClient';
-export { toPlainError, ApiErrorCode, type PlainApiError } from './error/errors';
-export { normalizeApiError } from './error/normalizeApiError';
+export { ApiErrorCode } from './error/errorDefinitions';
+export { toPlainError, type PlainApiError } from './error/toPlainError';
+export { toApiError } from './error/toApiError';

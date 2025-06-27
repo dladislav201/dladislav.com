@@ -1,4 +1,3 @@
-import { getFriendlyMessage } from './errorFriendly';
 import { z } from 'zod';
 
 export enum ApiErrorCode {
@@ -49,28 +48,3 @@ export type ApiError =
   | TimeoutError
   | NetworkError
   | ValidationError<z.ZodIssue[]>;
-
-export interface PlainApiError {
-  code: ApiErrorCode;
-  message: string;
-  status?: number;
-}
-
-export const isApiError = (e: unknown): e is ApiError =>
-  typeof e === 'object' && e !== null && 'code' in e;
-
-export function toPlainError(err: unknown): PlainApiError {
-  if (!isApiError(err))
-    return { code: ApiErrorCode.UNKNOWN, message: 'Unknown error' };
-
-  return err.code === ApiErrorCode.HTTP
-    ? {
-        code: err.code,
-        status: (err as HttpError).status,
-        message: getFriendlyMessage(err),
-      }
-    : {
-        code: err.code,
-        message: getFriendlyMessage(err),
-      };
-}

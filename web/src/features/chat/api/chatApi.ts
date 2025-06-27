@@ -1,9 +1,8 @@
-import { ApiClient } from '@/shared/api';
-import { normalizeApiError } from '@/shared/api';
+import { ApiClient, toApiError } from '@/shared/api';
 import { ChatMessageSchemaDTO, ChatMessage, toMessage } from '@/entities/chat';
 import { z } from 'zod';
 
-const api = new ApiClient({});
+const api = new ApiClient();
 
 export async function sendMessage(message: string): Promise<ChatMessage> {
   try {
@@ -12,7 +11,7 @@ export async function sendMessage(message: string): Promise<ChatMessage> {
     });
     return toMessage(dto);
   } catch (err) {
-    throw normalizeApiError(err);
+    throw toApiError(err);
   }
 }
 
@@ -24,6 +23,6 @@ export async function getChatHistory(): Promise<ChatMessage[]> {
     );
     return dtos.map(toMessage);
   } catch (err) {
-    throw normalizeApiError(err);
+    throw toApiError(err);
   }
 }
