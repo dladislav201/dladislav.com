@@ -4,7 +4,7 @@ import {
   ValidationError,
   TimeoutError,
   NetworkError,
-} from './error/errors';
+} from './error/errorDefinitions';
 import { API_URL } from '@/shared/constants';
 
 type Options<S extends z.ZodTypeAny> = {
@@ -44,8 +44,6 @@ export async function fetchJson<S extends z.ZodTypeAny>(
     const body = isJson ? await res.json().catch(() => null) : null;
 
     if (!res.ok) throw new HttpError(res.status, body);
-
-    console.log(body);
 
     const parsed = schema.safeParse(body);
     if (!parsed.success) throw new ValidationError(parsed.error.issues);

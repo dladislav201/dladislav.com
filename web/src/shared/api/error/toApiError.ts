@@ -4,9 +4,9 @@ import {
   TimeoutError,
   NetworkError,
   ValidationError,
-} from './errors';
+} from './errorDefinitions';
 
-export function normalizeApiError(err: unknown): ApiError {
+export function toApiError(err: unknown): ApiError {
   if (
     err instanceof HttpError ||
     err instanceof TimeoutError ||

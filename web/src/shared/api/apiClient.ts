@@ -8,7 +8,7 @@ type CommonOptions = {
 };
 
 export class ApiClient {
-  constructor(private readonly opts: CommonOptions) {}
+  constructor(private readonly opts: Partial<CommonOptions> = {}) {}
 
   private makeInit(method: string, body?: unknown): RequestInit {
     const headers = this.opts.getHeaders?.() ?? {};

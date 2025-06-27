@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ChatMessage } from '@/entities/chat/model/types';
-import { PlainApiError, toPlainError } from '@/shared/api';
+import { toPlainError, type PlainApiError } from '@/shared/api';
 import { getChatHistory, sendMessage } from '../api/chatApi';
 
 interface SendMessageResult {
